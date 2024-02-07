@@ -1,7 +1,7 @@
-import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
-import logo from '../assets/filmfeed-logo.png'
-import styles from '../styles/NavBar.module.css'
+import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
+import logo from '../assets/filmfeed-logo.png';
+import styles from '../styles/NavBar.module.css';
 
 const NavBar = () => {
     return (
