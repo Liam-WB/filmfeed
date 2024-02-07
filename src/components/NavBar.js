@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Container, Nav } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import logo from '../assets/filmfeed-logo.png'
 import styles from '../styles/NavBar.module.css'
 
