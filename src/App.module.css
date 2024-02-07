@@ -1,6 +1,6 @@
 .App {
-    font-family: 'Asap Condensed', sans-serif;
-    background-color: #f8f8f8;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ffffff;
     min-height: 100vh;
 }
 
@@ -9,7 +9,7 @@
   }
   
   a {
-    color: lightgray;
+    color: #01ced9;
     transition: color ease-in-out 0.3s;
   }
   
@@ -18,12 +18,12 @@
   }
   
   a:hover i {
-    color: #2142b2;
-    transition: color ease-in-out 0.3s;
+    color: rgb(0, 0, 0, 0.4);
+    transition: color ease-in-out 0.4s;
   }
   
   i {
-    color: #cfced3;
+    color: #01ced9;
     font-size: 1.6rem;
     padding: 7px;
     vertical-align: middle;
@@ -31,6 +31,6 @@
   
   i:hover {
     cursor: pointer;
-    transition: color ease-in-out 0.3s;
-    color: #2142b2;
+    transition: color ease-in-out 0.4s;
+    color: rgb(0, 0, 0, 0.4);
   }
