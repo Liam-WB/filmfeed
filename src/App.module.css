@@ -22,7 +22,7 @@
   }
   
   a:hover i {
-    color: rgb(0, 0, 0, 0.4);
+    color: #1ef4ff;
     transition: color ease-in-out 0.4s;
   }
   
@@ -36,5 +36,5 @@
   i:hover {
     cursor: pointer;
     transition: color ease-in-out 0.4s;
-    color: rgb(0, 0, 0, 0.4);
+    color: #1ef4ff;
   }
