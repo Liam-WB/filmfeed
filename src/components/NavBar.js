@@ -38,7 +38,7 @@ const NavBar = () => {
                     className={styles.NavLink} 
                     activeClassName={styles.Active} 
                     to="/contactus">
-                        <i class="fa-solid fa-envelope"></i>Contact Us
+                        <i className="fa-solid fa-envelope"></i>Contact Us
                     </NavLink>
                 </Nav>
             </Navbar.Collapse>
