@@ -80,6 +80,8 @@ const NavBar = () => {
     </>
   );
 
+  console.log('currentUser:', currentUser);
+
   return (
     <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top">
         <NavLink to="/">
