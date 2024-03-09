@@ -3,6 +3,8 @@ import axios from "axios";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
+// Current user authentication
+
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 

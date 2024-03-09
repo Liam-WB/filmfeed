@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+// Burger menu click off event handler
+
 const useClickOutsideToggle = () => {
   const [expanded, setExpanded] = useState(false);
   const ref = useRef(null);
