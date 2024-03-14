@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -7,15 +6,11 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
-
 import Asset from "../../components/Asset";
-
 import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
@@ -23,14 +18,15 @@ import { useRedirect } from "../../hooks/useRedirect";
 function PostCreateForm() {
   useRedirect("loggedOut")
   const [errors, setErrors] = useState({});
-
   const [postData, setPostData] = useState({
     title: "",
     content: "",
     image: "",
+    selectedMovie: null
   });
-  const { title, content, image } = postData;
-
+  const { title, content, image, selectedMovie } = postData;
+  const [searchResults, setSearchResults] = useState([]);
+  const titleInput = useRef(null);
   const imageInput = useRef(null);
   const history = useHistory();
 
@@ -51,6 +47,25 @@ function PostCreateForm() {
     }
   };
 
+  const handleSearchMovie = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await axiosReq.get(`/movies/?title=${titleInput.current.value}`);
+      setSearchResults(data);
+      console.log(data)
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleSelectMovie = (movie) => {
+    setPostData({
+      ...postData,
+      selectedMovie: movie
+    });
+    setSearchResults([]); // Clears search results after selecting an option
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -58,6 +73,7 @@ function PostCreateForm() {
     formData.append("title", title);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
+    formData.append("selectedMovie", selectedMovie);
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
@@ -162,9 +178,33 @@ function PostCreateForm() {
               </Alert>
             ))}
 
+            <Form.Group className="text-center">
+              <Form.Label>Link a movie or TV show</Form.Label>
+              <Form.Control
+                type="text"
+                ref={titleInput}
+                placeholder="Enter movie title"
+                onChange={handleSearchMovie}
+              />
+            </Form.Group>
+            
+            <div>
+              {searchResults.map(movie => (
+                <Button
+                  key={movie.id}
+                  onClick={() => handleSelectMovie(movie)}
+                  className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                >
+                  {movie.title}
+                </Button>
+              ))}
+            </div>
+
+              
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
+
         <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
           <Container className={appStyles.Content}>{textFields}</Container>
         </Col>
