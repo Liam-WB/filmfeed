@@ -22,10 +22,10 @@ function PostCreateForm() {
     title: "",
     content: "",
     image: "",
-    selectedMovie: null
+    selectedMovie: "",
   });
   const { title, content, image, selectedMovie } = postData;
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState({results: []});
   const titleInput = useRef(null);
   const imageInput = useRef(null);
   const history = useHistory();
@@ -54,16 +54,24 @@ function PostCreateForm() {
       setSearchResults(data);
       console.log(data)
     } catch (err) {
-      console.log(err);
+      console.log('CATCH: ', err);
     }
   };
 
   const handleSelectMovie = (movie) => {
+    const { title, content, image } = movie;
     setPostData({
       ...postData,
-      selectedMovie: movie
+      title: title, 
+      content: content,
+      image: image,
     });
-    setSearchResults([]); // Clears search results after selecting an option
+    setPostData({
+      ...postData,
+      selectedMovie: movie,
+    })
+    console.log('DATA: ', postData)
+    //setSearchResults([]); // Clears search results after selecting an option
   };
 
   const handleSubmit = async (event) => {
@@ -189,7 +197,7 @@ function PostCreateForm() {
             </Form.Group>
             
             <div>
-              {searchResults.map(movie => (
+              {searchResults.results.map((movie) => (
                 <Button
                   key={movie.id}
                   onClick={() => handleSelectMovie(movie)}
