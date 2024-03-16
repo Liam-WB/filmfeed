@@ -3,13 +3,29 @@ import Form from "react-bootstrap/Form";
 import styles from "../../styles/MoviesPage.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { Button } from "react-bootstrap";
+import {apiKey} from "../../apikey";
+import axios from "axios";
 
 
 function MoviesPage() {
   const [query, setQuery] = useState("");
   const [data, setData] = useState({});
 
-  const onSearchHandler = () => {};
+  const onSearchHandler = () => {
+    if (!query) {
+      return;
+    }
+
+    axios({
+      method:"GET",
+      url: `http://www.omdbapi.com/?t=${query}&&apiKey=${apiKey}`,
+    }).then( response => {
+      setData(response.data);
+      console.log(response.data) ;
+    });
+
+    setQuery("");
+  };
 
   return (
     <div className="pt-4">
@@ -36,6 +52,34 @@ function MoviesPage() {
           </Button>
         </div>
       </div>
+
+      { Object.keys (data).length > 0 &&
+        <div className="mt-10 w-full flex items-center justify-center">
+        <div>
+          <img src={data.poster} alt="#" />
+        </div>
+        <div className="ml-5 bg-slate-200">
+          <h1>Title: {data.Title}</h1>
+          <div className="pt-2" />
+          <p>Director: {data.Director}</p>
+          <div className="pt-2" />
+          <p>Genre: {data.Genre}</p>
+          <div className="pt-2" />
+          <p>Year: {data.Year}</p>
+          <div className="pt-2" />
+          <p>Country: {data.Country}</p>
+          <div className="pt-2" />
+          <p>Actors: {data.Actors}</p>
+          <div className="pt-2" />
+          <p>Language: {data.Language}</p>
+          <div className="pt-2" />
+          <p>Rating: {data.imdbRating}</p>
+          <div className="pt-2" />
+          <p>Plot: {data.Plot}</p>
+          <div className="pt-2" />
+        </div>
+      </div>
+      }
     </div>
   );
 }
