@@ -49,14 +49,16 @@ const NavBar = () => {
       >
         <i className="fas fa-heart"></i>Liked
       </NavLink>
-      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <i className="fas fa-sign-out-alt"></i>Sign out
-      </NavLink>
+      
       <NavLink
         className={styles.NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
       >
         <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+      </NavLink>
+
+      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+        <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>
     </>
   );
@@ -106,15 +108,16 @@ const NavBar = () => {
               <i className="fas fa-home"></i>Home
             </NavLink>
 
-            {currentUser ? loggedInIcons : loggedOutIcons}
-
             <NavLink 
                 className={styles.NavLink} 
                 activeClassName={styles.Active} 
-                to="/contactus"
+                to="/movies"
             >
-                <i className="fa-solid fa-envelope"></i>Contact Us
+                <i className="fa-solid fa-film"></i>Movies
             </NavLink>
+
+            {currentUser ? loggedInIcons : loggedOutIcons}
+
           </Nav>
         </Navbar.Collapse>
     </Navbar>

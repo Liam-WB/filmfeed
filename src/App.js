@@ -16,6 +16,7 @@ import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import MoviePage from "./pages/movies/MoviePage";
+import MoviesPage from "./pages/movies/MoviesPage"
 
 function App() {
   const currentUser = useCurrentUser();
@@ -59,6 +60,7 @@ function App() {
           <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route exact path="/movies" render={() => <MoviesPage />} />
           <Route exact path="/movies/:id" render={() => <MoviePage />} />
           <Route
             exact
