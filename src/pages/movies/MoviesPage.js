@@ -4,7 +4,7 @@ import styles from "../../styles/MoviesPage.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { Button } from "react-bootstrap";
 import {apiKey} from "../../apikey";
-import axios from "axios";
+import { axiosCustom } from "../../api/axiosDefaults";
 
 
 function MoviesPage() {
@@ -16,14 +16,13 @@ function MoviesPage() {
       return;
     }
 
-    axios({
-      method:"GET",
-      url: `http://www.omdbapi.com/?t=${query}&&apiKey=${apiKey}`,
-    }).then( response => {
+    const fetchMovie = async () => {
+      const response = await axiosCustom.get(`http://www.omdbapi.com/?t=${query}&&apiKey=${apiKey}`)
       setData(response.data);
-      console.log(response.data) ;
-    });
+      console.log(response.data);
+    };
 
+    fetchMovie();
     setQuery("");
   };
 
@@ -56,7 +55,7 @@ function MoviesPage() {
       { Object.keys (data).length > 0 &&
         <div className="mt-10 w-full flex items-center justify-center">
         <div>
-          <img src={data.poster} alt="#" />
+          <img src={data.Poster} alt="#" />
         </div>
         <div className="ml-5 bg-slate-200">
           <h1>Title: {data.Title}</h1>
