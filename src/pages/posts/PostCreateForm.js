@@ -12,8 +12,9 @@ import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { useHistory } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
+import { axiosCustom, axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
+import {apiKey} from "../../apikey";
 
 function PostCreateForm() {
   useRedirect("loggedOut")
@@ -63,6 +64,11 @@ function PostCreateForm() {
         setErrors(err.response?.data);
       }
     }
+  };
+
+  const fetchMovie = async () => {
+    const response = await axiosCustom.get(`http://www.omdbapi.com/?t=${movie}&&apiKey=${apiKey}`)
+    console.log(response.data);
   };
 
   const textFields = (
@@ -166,6 +172,15 @@ function PostCreateForm() {
                 onChange={handleChange}
               />
             </Form.Group>
+
+            <Button
+              key={movie.id}
+              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              name="submit"
+              onClick={fetchMovie}
+            >
+              Submit
+            </Button>
 
             <div className="d-md-none">{textFields}</div>
           </Container>
