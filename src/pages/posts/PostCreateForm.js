@@ -22,11 +22,9 @@ function PostCreateForm() {
     title: "",
     content: "",
     image: "",
-    selectedMovie: "",
+    movie: "",
   });
-  const { title, content, image, selectedMovie } = postData;
-  const [searchResults, setSearchResults] = useState({results: []});
-  const titleInput = useRef(null);
+  const { title, content, image, movie } = postData;
   const imageInput = useRef(null);
   const history = useHistory();
 
@@ -47,33 +45,6 @@ function PostCreateForm() {
     }
   };
 
-  const handleSearchMovie = async (event) => {
-    event.preventDefault();
-    try {
-      const { data } = await axiosReq.get(`/movies/?title=${titleInput.current.value}`);
-      setSearchResults(data);
-      console.log(data)
-    } catch (err) {
-      console.log('CATCH: ', err);
-    }
-  };
-
-  const handleSelectMovie = (movie) => {
-    const { title, content, image } = movie;
-    setPostData({
-      ...postData,
-      title: title, 
-      content: content,
-      image: image,
-    });
-    setPostData({
-      ...postData,
-      selectedMovie: movie,
-    })
-    console.log('DATA: ', postData)
-    //setSearchResults([]); // Clears search results after selecting an option
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -81,7 +52,7 @@ function PostCreateForm() {
     formData.append("title", title);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
-    formData.append("selectedMovie", selectedMovie);
+    formData.append("movie", movie);
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
@@ -190,25 +161,12 @@ function PostCreateForm() {
               <Form.Label>Link a movie or TV show</Form.Label>
               <Form.Control
                 type="text"
-                ref={titleInput}
-                placeholder="Enter movie title"
-                onChange={handleSearchMovie}
+                name="movie"
+                value={movie}
+                onChange={handleChange}
               />
             </Form.Group>
-            
-            <div>
-              {searchResults.results.map((movie) => (
-                <Button
-                  key={movie.id}
-                  onClick={() => handleSelectMovie(movie)}
-                  className={`${btnStyles.Button} ${btnStyles.Blue}`}
-                >
-                  {movie.title}
-                </Button>
-              ))}
-            </div>
 
-              
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
