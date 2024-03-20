@@ -26,6 +26,7 @@ function PostCreateForm() {
     movie: "",
   });
   const { title, content, image, movie } = postData;
+  const [movieData, setMovieData] = useState(null)
   const imageInput = useRef(null);
   const history = useHistory();
 
@@ -53,7 +54,7 @@ function PostCreateForm() {
     formData.append("title", title);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
-    formData.append("movie", movie);
+    formData.append("movie", movieData);
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
@@ -64,11 +65,18 @@ function PostCreateForm() {
         setErrors(err.response?.data);
       }
     }
+    console.log("Form Data:", formData);
   };
 
   const fetchMovie = async () => {
-    const response = await axiosCustom.get(`http://www.omdbapi.com/?t=${movie}&&apiKey=${apiKey}`)
-    console.log(response.data);
+    try {
+      const response = await axiosCustom.get(`http://www.omdbapi.com/?t=${movie}&&apiKey=${apiKey}`)
+      JSON.stringify(response)
+      setMovieData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching movie", error);
+    }   
   };
 
   const textFields = (

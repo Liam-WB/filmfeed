@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import logo from "../assets/filmfeed-logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
@@ -7,6 +7,7 @@ import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContex
 import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
+import { removeTokenTimestamp } from "../utils/utils";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -18,6 +19,7 @@ const NavBar = () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
+      removeTokenTimestamp();
     } catch (err) {
       console.log(err);
     }
@@ -82,10 +84,9 @@ const NavBar = () => {
     </>
   );
 
-  console.log('currentUser:', currentUser);
-
   return (
     <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top">
+      <Container>
         <NavLink to="/">
           <Navbar.Brand>
             <img src={logo} alt="logo" height="45" />
@@ -93,9 +94,9 @@ const NavBar = () => {
         </NavLink>
         {currentUser && addPostIcon}
         <Navbar.Toggle
-        ref={ref}
-        onClick={() => setExpanded(!expanded)}
-        aria-controls="basic-navbar-nav"
+          ref={ref}
+          onClick={() => setExpanded(!expanded)}
+          aria-controls="basic-navbar-nav"
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
@@ -120,6 +121,7 @@ const NavBar = () => {
 
           </Nav>
         </Navbar.Collapse>
+      </Container>
     </Navbar>
   );
 };

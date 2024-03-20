@@ -2,8 +2,6 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
 
-// User authentication level redirect method
-
 export const useRedirect = (userAuthStatus) => {
   const history = useHistory();
 
