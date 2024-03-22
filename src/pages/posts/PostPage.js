@@ -69,6 +69,7 @@ function PostPage() {
                   setComments={setComments}
                 />
               ))}
+              style={{overflow:"visible"}}
               dataLength={comments.results.length}
               loader={<Asset spinner />}
               hasMore={!!comments.next}

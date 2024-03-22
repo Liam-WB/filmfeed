@@ -121,6 +121,7 @@ function ProfilePage() {
           children={profilePosts.results.map((post) => (
             <Post key={post.id} {...post} setPosts={setProfilePosts} />
           ))}
+          style={{overflow:"visible"}}
           dataLength={profilePosts.results.length}
           loader={<Asset spinner />}
           hasMore={!!profilePosts.next}
