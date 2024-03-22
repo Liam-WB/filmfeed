@@ -79,3 +79,7 @@ figure {
 *::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+html {
+  background: #f8f8f8;
+}
