@@ -83,7 +83,7 @@ const Post = (props) => {
             {owner}
           </Link>
           <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
+            <span className={styles.DateTime}>{updated_at}</span>
             {is_owner && postPage && (
               <MoreDropdown
                 handleEdit={handleEdit}
@@ -97,9 +97,12 @@ const Post = (props) => {
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {movie && <Card.Text>Currently watching: {movie.Title}</Card.Text>}
-        {content && <Card.Text>{content}</Card.Text>}
+        {title && <Card.Title className={styles.PostTitle}>{title}</Card.Title>}
+        <hr></hr>
+        {content && <Card.Text className={styles.PostContent}>{content}</Card.Text>}
+
+        {movie && <Card.Text>Currently watching: {movie}</Card.Text>}
+
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger

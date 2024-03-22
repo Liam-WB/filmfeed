@@ -32,3 +32,17 @@ h5 {
 .HeartOutline:hover {
   color: #f85032;
 }
+
+.DateTime {
+  color: #8e8e8e;
+}
+
+.PostTitle {
+  font-size: 1.6rem;
+  text-align: left;
+}
+
+.PostContent {
+  font-size: 0.8rem;
+  text-align: left;
+}
