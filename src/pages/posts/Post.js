@@ -101,7 +101,7 @@ const Post = (props) => {
         <hr></hr>
         {content && <Card.Text className={styles.PostContent}>{content}</Card.Text>}
 
-        {movie && <Card.Text>Currently watching: {movie}</Card.Text>}
+        {movie && <Card.Text>Currently watching: {movie.title}</Card.Text>}
 
         <div className={styles.PostBar}>
           {is_owner ? (

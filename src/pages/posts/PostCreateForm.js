@@ -35,6 +35,10 @@ function PostCreateForm() {
       ...postData,
       [event.target.name]: event.target.value,
     });
+    setMovieData({
+      ...movieData,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handleChangeImage = (event) => {
@@ -54,7 +58,8 @@ function PostCreateForm() {
     formData.append("title", title);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
-    formData.append("movie", movieData);
+    formData.append("movie", JSON.stringify(movieData));
+
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
@@ -65,14 +70,12 @@ function PostCreateForm() {
         setErrors(err.response?.data);
       }
     }
-    console.log("Form Data:", formData);
   };
 
   const fetchMovie = async () => {
     try {
       const response = await axiosCustom.get(`http://www.omdbapi.com/?t=${movie}&&apiKey=${apiKey}`)
       setMovieData(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching movie", error);
     }   
