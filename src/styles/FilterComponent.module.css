@@ -1,0 +1,10 @@
+.Title {
+    font-size: 1.4em;
+    text-align: center;
+}
+
+.Spacer {
+    border: 1px solid #cfced3;
+    text-align: center;
+    width: 15%;
+}
