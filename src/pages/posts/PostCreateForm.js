@@ -25,8 +25,8 @@ function PostCreateForm() {
     image: "",
     movie: "",
   });
-  const { title, content, image, movie } = postData;
   const [movieData, setMovieData] = useState(null)
+  const { title, content, image, movie } = postData;
   const imageInput = useRef(null);
   const history = useHistory();
 
@@ -71,7 +71,6 @@ function PostCreateForm() {
   const fetchMovie = async () => {
     try {
       const response = await axiosCustom.get(`http://www.omdbapi.com/?t=${movie}&&apiKey=${apiKey}`)
-      JSON.stringify(response)
       setMovieData(response.data);
       console.log(response.data);
     } catch (error) {

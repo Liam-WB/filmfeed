@@ -98,7 +98,7 @@ const Post = (props) => {
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {movie && <Card.Text>Currently watching: {movie.title} {movie.poster}</Card.Text>}
+        {movie && <Card.Text>Currently watching: {movie.Title}</Card.Text>}
         {content && <Card.Text>{content}</Card.Text>}
         <div className={styles.PostBar}>
           {is_owner ? (
