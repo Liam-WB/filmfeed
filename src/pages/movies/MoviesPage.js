@@ -44,7 +44,7 @@ function MoviesPage() {
         </Form>
         <div className="margin-0 text-center">
           <Button
-          className={`${btnStyles.Button} ${btnStyles.Blue} ${btnStyles.Shadow}`}
+          className={`${btnStyles.Button} ${btnStyles.Blue} ${btnStyles.SB}`}
           onClick={onSearchHandler}
           >
             Search

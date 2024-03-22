@@ -44,6 +44,7 @@ a {
 
 a:hover {
   text-decoration: none;
+  color: #01ced9;
 }
 
 a:hover i {
