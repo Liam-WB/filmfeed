@@ -69,6 +69,7 @@ function PostsPage({ message, filter = "" }) {
                 children={posts.results.map((post) => (
                   <Post key={post.id} {...post} setPosts={setPosts} />
                 ))}
+                style={{overflow:"visible"}}
                 dataLength={posts.results.length}
                 loader={<Asset spinner />}
                 hasMore={!!posts.next}
