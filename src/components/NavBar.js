@@ -86,42 +86,40 @@ const NavBar = () => {
 
   return (
     <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top">
-      <Container>
-        <NavLink to="/">
-          <Navbar.Brand>
-            <img src={logo} alt="logo" height="45" />
-          </Navbar.Brand>
-        </NavLink>
-        {currentUser && addPostIcon}
-        <Navbar.Toggle
-          ref={ref}
-          onClick={() => setExpanded(!expanded)}
-          aria-controls="basic-navbar-nav"
-        />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto text-left">
-            <NavLink
-              exact
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-              to="/"
-            >
-              <i className="fas fa-home"></i>Home
-            </NavLink>
+      <NavLink to="/">
+        <Navbar.Brand>
+          <img src={logo} alt="logo" height="45" />
+        </Navbar.Brand>
+      </NavLink>
+      {currentUser && addPostIcon}
+      <Navbar.Toggle
+        ref={ref}
+        onClick={() => setExpanded(!expanded)}
+        aria-controls="basic-navbar-nav"
+      />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ml-auto text-left">
+          <NavLink
+            exact
+            className={styles.NavLink}
+            activeClassName={styles.Active}
+            to="/"
+          >
+            <i className="fas fa-home"></i>Home
+          </NavLink>
 
-            <NavLink 
-                className={styles.NavLink} 
-                activeClassName={styles.Active} 
-                to="/movies"
-            >
-                <i className="fa-solid fa-film"></i>Movies
-            </NavLink>
+          <NavLink 
+              className={styles.NavLink} 
+              activeClassName={styles.Active} 
+              to="/movies"
+          >
+              <i className="fa-solid fa-film"></i>Movies
+          </NavLink>
 
-            {currentUser ? loggedInIcons : loggedOutIcons}
+          {currentUser ? loggedInIcons : loggedOutIcons}
 
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 };
