@@ -3,6 +3,7 @@
     color: #242a3d;
     padding-left: 40px;
     margin-bottom: 16px;
+    box-shadow: 0px 0px 2em 0.2em rgb(0, 0, 0);
   }
   
   .SearchIcon {
@@ -14,5 +15,5 @@
   
   .SearchIcon:hover {
     cursor: default;
-    color: #cfced3;
+    color: #01ced9;
   }
