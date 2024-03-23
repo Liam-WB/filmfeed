@@ -93,3 +93,17 @@ figure {
 html {
   background: #f8f8f8;
 }
+
+.NewContent {
+  background-color: #ffffff;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #dadadf;
+  box-shadow: 0px 0px 2em 0.2em rgb(0, 0, 0);
+  transition: 0.15s;
+}
+
+.NewContent:hover {
+  box-shadow: 0px 0px 1em 0.1em rgb(0, 0, 0);
+}
