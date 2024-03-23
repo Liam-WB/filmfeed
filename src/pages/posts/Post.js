@@ -95,13 +95,14 @@ const Post = (props) => {
       </Card.Body>
       <Link to={`/posts/${id}`}>
         <Card.Img src={image} alt={title} />
+          <div className={styles.PostMovieContainer}>
+            {movie && <Card.Text className={styles.PostMovie}>Currently Watching: {movie}</Card.Text>}
+          </div>
       </Link>
       <Card.Body>
         {title && <Card.Title className={styles.PostTitle}>{title}</Card.Title>}
         <hr></hr>
         {content && <Card.Text className={styles.PostContent}>{content}</Card.Text>}
-
-        {movie && <Card.Text>Currently watching: {movie}</Card.Text>}
 
         <div className={styles.PostBar}>
           {is_owner ? (

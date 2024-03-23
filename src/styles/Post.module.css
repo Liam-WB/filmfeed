@@ -46,3 +46,27 @@ h5 {
   font-size: 0.8rem;
   text-align: left;
 }
+
+.PostMovie {
+  background-color: #92AD40;
+  padding: 5px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.PostMovieContainer {
+  width: 45%;
+  height: 80px;
+  position: absolute;
+  float: right;
+  right: 1%;
+  top: 72%;
+
+  overflow: hidden;
+  visibility: visible;
+  transition: 0.3s;
+}
+
+.postMovieContainer:focus {
+  visibility: visible;
+}
