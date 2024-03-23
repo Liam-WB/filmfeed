@@ -22,18 +22,16 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
       <Dropdown.Toggle as={ThreeDots} />
 
       <Dropdown.Menu
-        className="text-center"
+        className={`text-center ${styles.Dropdown}`}
         popperConfig={{ strategy: "fixed" }}
       >
         <Dropdown.Item
-          className={styles.DropdownItem}
           onClick={handleEdit}
           aria-label="edit"
         >
           <i className="fas fa-edit" />
         </Dropdown.Item>
         <Dropdown.Item
-          className={styles.DropdownItem}
           onClick={handleDelete}
           aria-label="delete"
         >
@@ -47,10 +45,13 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
 export const ProfileEditDropdown = ({ id }) => {
   const history = useHistory();
   return (
-    <Dropdown className={`ml-auto px-3 ${styles.Absolute} ${styles.Settings}`} drop="left">
+    <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
       <Dropdown.Toggle as={ThreeDots} />
-      <Dropdown.Menu>
+      <Dropdown.Menu
+      className={`${styles.Dropdown}`}
+      >
         <Dropdown.Item
+          className={`${styles.DropdownItem}`}
           onClick={() => history.push(`/profiles/${id}/edit`)}
           aria-label="edit-profile"
         >
@@ -58,6 +59,7 @@ export const ProfileEditDropdown = ({ id }) => {
           Edit profile
         </Dropdown.Item>
         <Dropdown.Item
+          className={`${styles.DropdownItem}`}
           onClick={() => history.push(`/profiles/${id}/edit/username`)}
           aria-label="edit-username"
         >
@@ -65,6 +67,7 @@ export const ProfileEditDropdown = ({ id }) => {
           Change username
         </Dropdown.Item>
         <Dropdown.Item
+          className={`${styles.DropdownItem}`}
           onClick={() => history.push(`/profiles/${id}/edit/password`)}
           aria-label="edit-password"
         >
