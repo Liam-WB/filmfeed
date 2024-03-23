@@ -64,8 +64,14 @@
 }
 
 .Bright {
-  background-color: #2ed9ff;
-  color: #2142b2;
+  background-color: #1ed2dc;
+  color: white;
+  transition: 0.3s;
+}
+
+.Bright:hover {
+  background-color: white;
+  color: #1ed2dc;
 }
 
 .SB {

@@ -10,6 +10,11 @@
     text-align: center;
     padding: 10px;
   }
+
+  .Input:focus {
+    border: 1px solid #2ed9ff;
+    box-shadow: None;
+  }
   
   .Header {
     font-style: normal;
@@ -19,7 +24,7 @@
     text-align: center;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #2142b2;
+    color: #818181;
   }
   
   .Link {
