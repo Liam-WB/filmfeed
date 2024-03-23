@@ -14,7 +14,7 @@
 }
 
 .DropdownItem:hover {
-  color: #2ed9ff;
+  color: #1ed2dc;
 }
 
 .Absolute {
@@ -28,9 +28,9 @@
 }
 
 .DropdownToggle i:hover {
-  color: #2ed9ff;
+  color: #1ed2dc;
 }
 
 .DropdownToggle i:focus {
-  color: #2ed9ff;
+  color: #1ed2dc;
 }

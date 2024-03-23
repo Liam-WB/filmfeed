@@ -61,9 +61,11 @@ i {
   font-size: 1.6rem;
   padding: 7px;
   vertical-align: middle;
+  transition: 0.3s;
 }
 
 i:hover {
+  color: #1ed2dc;
   cursor: pointer;
   transition: color ease-in-out 0.3s;
 }
