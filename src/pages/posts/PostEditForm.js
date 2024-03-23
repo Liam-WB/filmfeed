@@ -13,18 +13,19 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
 import { useHistory, useParams } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
+import { axiosCustom, axiosReq } from "../../api/axiosDefaults";
+import { apiKey } from "../../apikey";
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
-
   const [postData, setPostData] = useState({
     title: "",
     content: "",
     image: "",
+    movie: "",
   });
-  const { title, content, image } = postData;
-
+  const [movieData, setMovieData] = useState(null)
+  const { title, content, image, movie } = postData;
   const imageInput = useRef(null);
   const history = useHistory();
   const { id } = useParams();
@@ -33,9 +34,8 @@ function PostEditForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/posts/${id}/`);
-        const { title, content, image, is_owner } = data;
-
-        is_owner ? setPostData({ title, content, image }) : history.push("/");
+        const { title, content, image, movie, is_owner } = data;
+        is_owner ? setPostData({ title, content, image, movie }) : history.push("/");
       } catch (err) {
         console.log(err);
       }
@@ -67,6 +67,7 @@ function PostEditForm() {
 
     formData.append("title", title);
     formData.append("content", content);
+    formData.append("movie", JSON.stringify(movieData));
 
     if (imageInput?.current?.files[0]) {
       formData.append("image", imageInput.current.files[0]);
@@ -81,6 +82,16 @@ function PostEditForm() {
         setErrors(err.response?.data);
       }
     }
+  };
+
+  const fetchMovie = async () => {
+    try {
+      const response = await axiosCustom.get(`http://www.omdbapi.com/?t=${movie}&&apiKey=${apiKey}`)
+      setMovieData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching movie", error);
+    }   
   };
 
   const textFields = (
@@ -123,7 +134,7 @@ function PostEditForm() {
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        save
+        create
       </Button>
     </div>
   );
@@ -160,6 +171,25 @@ function PostEditForm() {
                 {message}
               </Alert>
             ))}
+
+            <Form.Group className="text-center">
+              <Form.Label>Link a movie or TV show</Form.Label>
+              <Form.Control
+                type="text"
+                name="movie"
+                value={movie}
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+            <Button
+              key={movie.id}
+              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              name="submit"
+              onClick={fetchMovie}
+            >
+              Submit
+            </Button>
 
             <div className="d-md-none">{textFields}</div>
           </Container>
