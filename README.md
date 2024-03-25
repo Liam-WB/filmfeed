@@ -1,1 +1,9 @@
 # Filmfeed
+
+"Filmfeed" is a movie enthuasiast's take on a social media website, made for all types of users who are interested in sharing their experience and journey. Whether you're a casual watcher or a critic, filmfeed is tailor-made to welcome all, new-face or old to create connections and meet like-minded watchers!
+
+This README.md is for the project frontend. For more information on the project backend, please visit [this link](https://github.com/Liam-WB/filmfeed-api).
+
+--
+
+The filmfeed interactive frontend is designed to give users a digitally hassle free and relatively simple yet effective user experience by keeping their journey to their intended actions short and sweet, whilst not taking their attention away from the big picture. Everything from asset performance to colour palet have been made with UX in mind. Unregistered users will be greeted with a hub-like-homepage connecting different movie enthusiasts, or people that just want to connect, from around the world, keeping up to date with the latest watches or simply joining in conversations. Unregistered users will find the usual social media features: Sign in/ Sign up pages, posts with the latest movie likes, dislikes, conversations, most popular movies and profiles and their pages as well as search functionality for finding more specific comments, posts or profiles. For those looking to get involved, signed in users will be given access to their own profile/identity as well as a tailor made experience for them to start their own conversations, topics or join other conversations. Users will also be able to like/unlike others posts and follow/unfollow others, therefore updating their own likes/dislikes and feeds.
