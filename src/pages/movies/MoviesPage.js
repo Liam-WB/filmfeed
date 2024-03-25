@@ -20,7 +20,6 @@ function MoviesPage() {
     const fetchMovie = async () => {
       const response = await axiosCustom.get(`http://www.omdbapi.com/?t=${query}&&apiKey=${apiKey}`)
       setData(response.data);
-      console.log(response.data);
     };
 
     fetchMovie();

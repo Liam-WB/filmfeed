@@ -54,7 +54,6 @@ function PostCreateForm() {
     formData.append("title", title);
     formData.append("content", content);
     formData.append("movie", JSON.stringify(movieData));
-    console.log(movieData);
     
     if (imageInput?.current?.files[0]) {
       formData.append("image", imageInput.current.files[0]);
@@ -195,7 +194,6 @@ function PostCreateForm() {
 
             <div className="d-md-none">{textFields}</div>
           </Container>
-          {console.log(movieData)}
 
 
         </Col>
