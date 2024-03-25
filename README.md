@@ -100,3 +100,37 @@ User stories were categorised into the 2 following milestones:
 * As a logged in user I can like a comment so that I can interact with a user and indicate I enjoyed their comment
 * As a logged in user I can update my profile so that others can view my profile information
 * As a logged in user I can link movies to my post so that I can show others what movie I am watching
+
+#### Target Audience
+
+* People looking for a social media site
+* People looking to discuss their faviroute movies
+* People looking to discuss a recently watched movie
+* People looking to join in a conversation
+* People looking to start a converstation
+* People looking for something new
+* People starting a new hobby
+* Critics looking to write in depth analysis/ reviews
+
+#### Unregistered User
+
+* Simple, UX orientated, attention grabbing website naviagation for easy yet fulfilling exploration and user involvment.
+* Aesthetic, immersive UX orientated visuals showcasing the different components, functions and features the site has to offer.
+* Informative content structured to provide users with an overview of posts, profiles, movies as well as other social media related, categorised information.
+* User friendly forms and error validation.
+* A simple and easy to access sign up process.
+
+#### Registered user
+
+* A seamless login system and process, with secure, personalised user data.
+* Browsing different content such as posts and their conversations, specific movies, user profiles.
+* Access to a tailor made dashboard and navigation bar, made to easily format all components and their data in a logical order, allowing users who know their way around the site to easily access previously accessed features.
+* Ability to modify their own data securely.
+
+#### Admin user
+
+* Secure and seperate login portal, for admin and superuser accounts to access all/ specific site data easily.
+* Access to an admin dashboard, for admin users to see all site data and easily manage their content.
+* CRUD functionality - Admin is able to add / remove data easily, and related data cascades in relation to the data's relationship declared in the backend.
+* Confirmations for data management, incase of an error being made.
+
