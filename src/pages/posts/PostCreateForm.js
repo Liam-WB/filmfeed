@@ -81,40 +81,6 @@ function PostCreateForm() {
     }   
   };
 
-  const results = async () => {
-    try {
-      const resultsblock = ( <div className={appStyles.NewContent}>
-        <div className="mt-10 w-full flex items-center justify-center">
-        </div>
-        <div>
-          <img className={styles.MoviePoster} src={postData.movie.Poster} alt="#" />
-        </div>
-        <div className="ml-5 bg-slate-200">
-        <h1>Title: {postData.movie.Title}</h1>
-        <div className="pt-2" />
-        <p>Director: {postData.movie.Director}</p>
-        <div className="pt-2" />
-        <p>Genre: {postData.movie.Genre}</p>
-        <div className="pt-2" />
-        <p>Year: {postData.movie.Year}</p>
-        <div className="pt-2" />
-        <p>Country: {postData.movie.Country}</p>
-        <div className="pt-2" />
-        <p>Actors: {postData.movie.Actors}</p>
-        <div className="pt-2" />
-        <p>Language: {postData.movie.Language}</p>
-        <div className="pt-2" />
-        <p>Rating: {postData.movie.imdbRating}</p>
-        <div className="pt-2" />
-        <p>Plot: {postData.movie.Plot}</p>
-        <div className="pt-2" />
-      </div>
-      </div>
-      )
-    } catch (error) {
-      console.error("Error fetching movie, try tweaking your search!", error);
-    }};
-
   const textFields = (
     <div className="text-center">
       <Form.Group>
