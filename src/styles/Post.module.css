@@ -48,29 +48,42 @@ h5 {
 }
 
 .PostMovie {
-  padding: 56% 36% 56% 36%;
+  text-align: center;
+  padding: 30% 10% 300% 10%;
   color: #FFFFFF;
   font-weight: bold;
   z-index: 1;
   position: absolute;
-  margin: -20px;
-  left:5%;
-  background: linear-gradient(265.27deg, #72727200 5.55%, rgb(121, 121, 121, 0.8) 50%);
-  transition: 0.3s;
+  left:0%;
+  top: 0%;
+  transition: ease-in-out 0.3s;
+  border-radius: 18px;
+  visibility: hidden;
+}
+
+.PostMovieContainer:hover > .PostMovie{
+  visibility: visible;
 }
 
 
 .PostMovieContainer {
-  width: 33%;
-  height: 27%;
+  width: 5%;
+  height: 20%;
   position: absolute;
   float: right;
-  right: 1%;
-  top: 72%;
+  right: 2%;
+  bottom: 2%;
   border-radius: 20px;
   z-index: 1;
-  border: 3px solid #1ed2dc;
+  border: 1px solid #1ed2dc;
   overflow: hidden;
+  transition: ease-in-out 0.3s;
+  background: linear-gradient(265.27deg, #72727200 5.55%, rgb(121, 121, 121, 0.8) 50%);
+}
+
+.PostMovieContainer:hover {
+  width: 33%;
+  height: 27%;
 }
 
 .PostMoviePoster {

@@ -88,7 +88,7 @@ function PostEditForm() {
     try {
       const response = await axiosCustom.get(`http://www.omdbapi.com/?t=${movie}&&apiKey=${apiKey}`)
       setMovieData(response.data);
-      console.log(response.data);
+      alert(`Movie: ${response.data.Title} was submitted.`);
     } catch (error) {
       console.error("Error fetching movie", error);
     }   

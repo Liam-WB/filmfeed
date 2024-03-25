@@ -9,6 +9,7 @@ const CopyrightComponent = ({ mobile }) => {
     <Container
       className={`${appStyles.NewContent}`}
     >
+        <p className={`text-secondary ${styles.Spacer}`}>Made by Liam Blake</p>
         <p className={`text-secondary ${styles.Spacer}`}>Copyright ©</p>
         <hr className={`${styles.Spacer}`}></hr>
         <a href="https://www.linkedin.com/in/liam-blake-985239225/">

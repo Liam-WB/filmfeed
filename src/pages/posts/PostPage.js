@@ -17,7 +17,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
-import PopularMovies from "../movies/PopularMovies";
 import CopyrightComponent from "../../CopyrightComponent";
 
 function PostPage() {
@@ -87,7 +86,6 @@ function PostPage() {
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         <PopularProfiles />
-        <PopularMovies />
         <CopyrightComponent />
       </Col>
     </Row>

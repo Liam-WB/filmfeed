@@ -24,7 +24,6 @@ import Post from "../posts/Post";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
-import PopularMovies from "../movies/PopularMovies";
 import CopyrightComponent from "../../CopyrightComponent";
 
 function ProfilePage() {
@@ -155,7 +154,6 @@ function ProfilePage() {
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         <PopularProfiles />
-        <PopularMovies />
         <CopyrightComponent />
       </Col>
     </Row>
