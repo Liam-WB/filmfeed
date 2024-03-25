@@ -180,6 +180,7 @@ function PostCreateForm() {
                 name="movie"
                 value={movie}
                 onChange={handleChange}
+                required
               />
             </Form.Group>
 
