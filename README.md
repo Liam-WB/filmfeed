@@ -190,3 +190,84 @@ The popular profiles component is made to appear across the right of all pages o
 
 ![PPComp](/md_images/Screenshot%202024-03-25%20150541.png)
 
+If the user's' logged in, they can see the profile avatar and the username, and if the user is logged in, they will also see a button allowing them to follow or unfollow the profile. Each profile avatar can also be clicked on to view the full profile page of that user.
+
+![PPCompMobile](/md_images/Screenshot%202024-03-25%20151122.png)
+
+##### Post
+
+The post list displays posts created by users that are requested from the backend API and ordered by the most recent using the "created_at" field in the API. They are ordered in a descending order.
+
+![PostList](/md_images/Screenshot%202024-03-25%20151707.png)
+
+Each posts displays the user who created it, the written content, the created at information, image and comment, like tags. The posts component also has an in built pop-out function for displaying movie information, which will display on mouce hover. By clicking on the comment tag or image the user is forwarded to the post's individual page.
+
+##### Search bar
+
+If the user is looking for a specific item within the database, it'll be returned according to the input from the user. The user can use the search bar to search for comments, profiles, movies, post names or content.
+
+![PostList](/md_images/Screenshot%202024-03-25%20085456.png)
+
+##### Movies page
+
+The movies page is simply a tool for users to search a movie, and have it return the movie data. As explained in the backend README file, the method for fetching the Open Movie DataBase data in this page is all done via the frontend, as the data is readonly and does not need to be stored. The page consists of a very simple search bar and search button for users to input a movie they're trying to look up. The search query will then make a request to the OMDB API and return the movie with the closest title to the search query, or it'll return an error saying the movie was not found. Upon successfully fetching a movie, a secondary component is displayed holding all the movie data for the user to read through.
+
+![MoviesPage1](/md_images/Screenshot%202024-03-25%20153111.png)
+
+![MoviesPage2](/md_images/Screenshot%202024-03-25%20153155.png)
+
+##### Feed page
+
+The feed page contains a similar layout to the homepage. The main difference is that the posts list has been filtered to only return posts created by users the logged in user is following.
+
+![FeedPage](/md_images/Screenshot%202024-03-25%20153320.png)
+(There are currently no posts displayed as during the screenshot being taken the website did not contain posts from any users apart from the logged in user.)
+
+##### Liked page
+
+The liked page contains a similar layout to the homepage and feed page. The main difference is that the posts list has been filtered to only return liked posts created by the logged in user.
+
+![LikedPage](/md_images/Screenshot%202024-03-25%20153329.png)
+(There are currently no posts displayed as during the screenshot being taken the website did not contain posts from any users apart from the logged in user.)
+
+##### Create a post
+
+If a user is logged in, they're given the option to add a post in the navbar. The icon is to the left side, next to the logo, and upon clicking will redirect the user to the create post form. The form contains the media upload link to upload images. Upon leaving this blank, a default image will be uploaded. The title and content tags are both user input form fields for the user to fill in. The content field can be left blank whereas the title is required. The post page also contains a movie link feature to link a movie the user wants to link to the post for others to see. Just as before this is done by fetching the data from the OMDB API, however in this case the data is stored to the post data upon form submission. The movie selection form allows the user to put in a search query and submit upon completion. The user will receive a confirmation alert to inform them of the movie they've picked. This can be changed upon repeating this process. Upon changing the image, the form will confirm the image by showing a preview in the media upload section.
+
+![CAPForm](/md_images/Screenshot%202024-03-25%20154225.png)
+
+![CAPForm2](/md_images/Screenshot%202024-03-25%20154317.png)
+
+##### Post page
+
+The post page is designed to display posts in more detail as opposed to the post list view, made for a bunch of posts to catch the user's attention. The post page is equipped with the same post data as listed in the post list. Aditionally it contains a post settings dropdown icon for user's post data management (if the logged in user owns the post), and the likes and comments count below. Below the post is the comment creation form (if the user is logged in) and the previous post comments. The post comments are listed in order of most recent, just as the post list is. If there are no comments yet in the post comment section, a message saying so will be displayed. As mentioned before, the side bar components, the popular profiles and copyright components will stay displayed.
+
+![PostPage](/md_images/Screenshot%202024-03-25%20154945.png)
+
+##### Comments
+
+Each post page contains a button prompting users to leave comments for that post. The comment form has one field, the comment's content. The field is required for leaving a comment, so the user will receive an error upon leaving it blank. When a comment's published the count visibly increases. For comment owners, if they're specifically in that comment section they'll see a dropdown icon for editing their currently published comment, just as post owners will see one on each of their post's page. This dropdown will also give the option to delete the comment, similarly to the post's dropdown menu.
+
+![Comment](/md_images/Screenshot%202024-03-25%20155725.png)
+
+##### Dropdown menu (Edit post form)
+
+As mentioned before the dropdown menu gives user two options:
+* Edit data
+* Delete data
+
+Upon selecting to delete data, their data will be erased from the database, cascading any related and attached information and the user will be redirected to the homepage if the deleted data is a post. Upon editing data, as mentioned above for comments, the user will have a pre-populated create form pop up so they can edit their comment, however for posts the user is redirected to the post edit form: A pre populated form with the exact same layout as the create a post form that can be updated and resubmitted, changing post data.
+
+![Dropdown](/md_images/Screenshot%202024-03-25%20155046.png)
+
+![EditPost](/md_images/Screenshot%202024-03-25%20155120.png)
+
+##### Post likes
+
+Likes as briefly shown in the post page have a count updated depending on how many users have liked that individual post. If the logged in user enters their own post page, they won't be able to like it. When liking a post, the site will confirm by turning the icon (formerly grey outline) to a solid red heart icon.
+
+![Like](/md_images/image%20copy%202.png)
+
+##### Profile page
+
+Throughout the site, you'll see profile avatars located on components e.g. navbar, popular profiles, posts. Each of these can be clicked on to visit the avatar owner's profile. Here you can see their profile data: Posts, following and follower counts, and their bio. When a user signs up for the first time, a profile is automatically created with their username in turn creating their default profile page. The information that automatically is updated is the follower/following count and posts count. Profile owners that enter their own profile page are met with an extra dropdown menu to manage their profile data, just like with posts and comments. This dropdown contains options to edit their username, password or content (bio and picture). Upon clicking one of these options the user is redirected to the correspondant form which upon submission will update their data.
