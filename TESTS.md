@@ -22,7 +22,7 @@ The responsiveness tests were mainly composed of device, viewport, browser and c
 ### Code validation
 
 #### PEP8
- 
+
 
 #### Automated Testing
 
