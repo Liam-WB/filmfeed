@@ -270,4 +270,52 @@ Likes as briefly shown in the post page have a count updated depending on how ma
 
 ##### Profile page
 
-Throughout the site, you'll see profile avatars located on components e.g. navbar, popular profiles, posts. Each of these can be clicked on to visit the avatar owner's profile. Here you can see their profile data: Posts, following and follower counts, and their bio. When a user signs up for the first time, a profile is automatically created with their username in turn creating their default profile page. The information that automatically is updated is the follower/following count and posts count. Profile owners that enter their own profile page are met with an extra dropdown menu to manage their profile data, just like with posts and comments. This dropdown contains options to edit their username, password or content (bio and picture). Upon clicking one of these options the user is redirected to the correspondant form which upon submission will update their data.
+Throughout the site, you'll see profile avatars located on components e.g. navbar, popular profiles, posts. Each of these can be clicked on to visit the avatar owner's profile. Here you can see their profile data: Posts, following and follower counts, and their bio. When a user signs up for the first time, a profile is automatically created with their username in turn creating their default profile page. The information that automatically is updated is the follower/following count and posts count. Profile owners that enter their own profile page are met with an extra dropdown menu to manage their profile data, just like with posts and comments. This dropdown contains options to edit their username, password or content (bio and picture). Upon clicking one of these options the user is redirected to the correspondant form which upon submission will update their data. The forms are pre populated if the data was previously filled in beforehand. If the user does not own the profile page they've entered, they will be given an optional follow button.
+
+![PP1](/md_images/Screenshot%202024-03-25%20162032.png)
+![PP2](/md_images/Screenshot%202024-03-25%20162025.png)
+![PP3](/md_images/Screenshot%202024-03-25%20162019.png)
+![PP4](/md_images/Screenshot%202024-03-25%20162004.png)
+![PP5](/md_images/Screenshot%202024-03-25%20161116.png)
+
+##### Reusable React content
+
+* Asset reused for loading images, messages and spinners
+* Avatar reused to display avatars across the site
+* NavBar reused for navigation on every page
+* NotFound used for invalid urls
+* Three dots edit delete dropdown menu used for afforementioned dropdown content
+
+##### Future features
+* A user - movie rating system
+* Admin crud functionality in the frontend for site moderation
+* A watch history profile section
+* A popular movies section similar to popular profiles
+
+### Skeleton
+
+#### Wireframes & initial flowchart
+
+![WF1](/md_images/SS%20Admin%20Home.png)
+![WF2](/md_images/SS%20Edit%20Post%20Form.png)
+![WF3](/md_images/SS%20Sign%20Form.png)
+![WF4](/md_images/SS%20User%20Edit.png)
+![WF5](/md_images/SS%20User%20logged.png)
+![WF6](/md_images/SS%20User%20Not%20logged.png)
+![FC](/md_images/flowchart.png)
+
+
+### Surface
+
+#### Design
+
+##### Colour scheme
+
+The colour scheme was developed through trial and error with visibility, aesthetic and UX in mind. As this is an app for highlighting positive stories and creating connections I decided on light blue for a positive and outstanding colour. The colour scheme was developed with [coolors](https://coolors.co/) colour palet generator.
+
+![Colours](/md_images/image.png)
+##### Logo
+
+The logo was made with [BrandCrowd](https://www.brandcrowd.com/maker/logos?code=25offsem&utm_medium=cpc&utm_source=google&utm_campaign=uk_01_brand_generic&utm_adgroup=brandcrowd_misspellingsclose_variants&utm_content=635152623757&utm_keyword=brandcrowd&utm_network=g&gad_source=1&gclid=Cj0KCQjwwYSwBhDcARIsAOyL0fhX0lJVEP9odRc-eBWW9dRr0cVYZBz1fmYLeE6hUpKO7XcBgiFbF7YaAptHEALw_wcB). Same as above, the logo was made using these same principles.
+
+![Logo](/md_images/image%20copy%203.png)
