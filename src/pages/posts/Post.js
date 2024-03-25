@@ -29,8 +29,6 @@ const Post = (props) => {
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
-  console.log(movie);
-
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
   };
@@ -98,8 +96,8 @@ const Post = (props) => {
       <Link to={`/posts/${id}`}>
         <Card.Img src={image} alt={title} />
           <div className={styles.PostMovieContainer}>
-            {movie && <Card.Text className={styles.PostMovie}>Currently Watching: {movie.Title}</Card.Text>}
-            {movie && <img className={styles.PostMoviePoster} src={movie.Poster} alt="#"></img>}
+            {movie && <Card.Text className={styles.PostMovie}>Currently Watching: {JSON.parse(movie).Title}</Card.Text>}
+            {movie && <img className={styles.PostMoviePoster} src={JSON.parse(movie).Poster} alt="#"></img>}
           </div>
       </Link>
       <Card.Body>
