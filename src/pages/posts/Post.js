@@ -96,7 +96,7 @@ const Post = (props) => {
       <Link to={`/posts/${id}`}>
         <Card.Img src={image} alt={title} />
           <div className={styles.PostMovieContainer}>
-            {movie && <Card.Text className={styles.PostMovie}>Currently Watching: {movie}</Card.Text>}
+            {movie && <Card.Text className={styles.PostMovie}>Currently Watching: {movie.Title}</Card.Text>}
           </div>
       </Link>
       <Card.Body>
