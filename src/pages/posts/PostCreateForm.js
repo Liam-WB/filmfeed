@@ -53,7 +53,7 @@ function PostCreateForm() {
 
     formData.append("title", title);
     formData.append("content", content);
-    formData.append("movie", JSON.stringify(movieData));
+    formData.append("movie", JSON.parse(movieData));
     console.log(movieData);
     
     if (imageInput?.current?.files[0]) {

@@ -55,12 +55,13 @@ h5 {
 }
 
 .PostMovieContainer {
-  width: 45%;
-  height: 80px;
+  width: 33%;
+  height: 27%;
   position: absolute;
   float: right;
   right: 1%;
   top: 72%;
+  z-index: 1;
 
   overflow: hidden;
   visibility: visible;
@@ -69,4 +70,12 @@ h5 {
 
 .postMovieContainer:focus {
   visibility: visible;
+}
+
+.postMoviePoster {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-position:center;
+  object-fit: cover;
 }
