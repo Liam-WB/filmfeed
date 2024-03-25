@@ -33,6 +33,7 @@ Live API [link](https://filmfeed-api-d8205608db2c.herokuapp.com/).
 ## User Experience Design (UX)
 
 ### Strategy
+--
 
 #### Project Objective
 
@@ -133,4 +134,29 @@ User stories were categorised into the 2 following milestones:
 * Access to an admin dashboard, for admin users to see all site data and easily manage their content.
 * CRUD functionality - Admin is able to add / remove data easily, and related data cascades in relation to the data's relationship declared in the backend.
 * Confirmations for data management, incase of an error being made.
+
+### Structure
+--
+
+#### Project structure
+
+On the filmfeed site, authentication, display, feature access and page access are shown in 2 seperate views. For a logged out user, you are met with a less tailored dashboard, however some of the features offered to signed in users are still offered e.g. the ability to view posts, movies etc. The states of these components change if the user is classed as logged in, which an unregistered user will have the option to easily access via the navbar links.
+
+When logged out, the navbar shows the Homepage icon, sign in and sign up pages as well as the movies page, allowing logged out users to still explore and discover what the site has to offer.
+
+When a user is logged in, they are given more features. Their navbar is updated for a more tailored experience. This includes the "feed", "liked" and "profile" pages as well as the option to sign out. Logged in users are given the opportunity to create and manage their own data: Manage profile content, posts, comments, likes, follows, linked movies.
+
+#### Features
+
+##### Navigation
+
+The nav bar is made to give the user a hassle free and simple navigation experience. With this in mind, it was developed using simplicity, and aesthetics as the foundations. For tablets and mobile devices the menu will adapt to a hamburger toggle menu, allowing for a more compact version of the same, simple component. The icons will adapt according to the authentication level, as mentioned above.
+
+![NavBar1](md_images/Screenshot%202024-03-25%20085456.png)
+
+![NavBar2](md_images/Screenshot%202024-03-25%20085510.png)
+
+![NavBar3](md_images/Screenshot%202024-03-25%20085527.png)
+
+![NavBar4](md_images/Screenshot%202024-03-25%20085534.png)
 
