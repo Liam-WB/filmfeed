@@ -78,7 +78,7 @@ function App() {
             path="/profiles/:id/edit"
             render={() => <ProfileEditForm />}
           />
-          <Route render={() => {NotFound}} />
+          <Route render={() => {NotFound()}} />
         </Switch>
       </Container>
     </div>

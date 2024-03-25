@@ -1,6 +1,7 @@
 import React from 'react'
 import NoResults from '../assets/no-results.png'
 import NFstyles from '../styles/NotFound.module.css'
+import Asset from './Asset'
 
 const NotFound = () => {
   return (
