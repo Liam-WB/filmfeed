@@ -337,7 +337,6 @@ The logo was made with [BrandCrowd](https://www.brandcrowd.com/maker/logos?code=
 * Heroku - A cloud platform that the application is deployed to
 * Lighthouse - Used to test site performance
 * Looka - Used to generate the you.i logo
-* Tech Sini - Used to generate the mockup of the final website on several devices
 * Favicon - Used to create the favicon
 * Google Chrome DevTools - Used to debug and test responsiveness
 * Google Fonts - Used to import the website font
