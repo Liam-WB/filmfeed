@@ -313,9 +313,88 @@ Throughout the site, you'll see profile avatars located on components e.g. navba
 
 The colour scheme was developed through trial and error with visibility, aesthetic and UX in mind. As this is an app for highlighting positive stories and creating connections I decided on light blue for a positive and outstanding colour. The colour scheme was developed with [coolors](https://coolors.co/) colour palet generator.
 
-![Colours](/md_images/image.png)
+![Colours](/md_images/Screenshot%202024-03-25%20163440.png)
 ##### Logo
 
 The logo was made with [BrandCrowd](https://www.brandcrowd.com/maker/logos?code=25offsem&utm_medium=cpc&utm_source=google&utm_campaign=uk_01_brand_generic&utm_adgroup=brandcrowd_misspellingsclose_variants&utm_content=635152623757&utm_keyword=brandcrowd&utm_network=g&gad_source=1&gclid=Cj0KCQjwwYSwBhDcARIsAOyL0fhX0lJVEP9odRc-eBWW9dRr0cVYZBz1fmYLeE6hUpKO7XcBgiFbF7YaAptHEALw_wcB). Same as above, the logo was made using these same principles.
 
 ![Logo](/md_images/image%20copy%203.png)
+
+#### Technologies Used - Frontend
+
+##### Languages
+* HTML5 - Provides the content and structure for the website
+* CSS3 - Provides the styling for the website
+* JavaScript - Provides interactive elements of the website
+* React.js - Provides the base for the frontend components
+
+##### Frameworks, Software and Web Applications
+
+* React Bootstrap - A CSS framework that helps build solid, responsive, mobile-first sites
+* Balsamiq - Used to create the wireframes
+* Coolors - Used to pick the colour scheme of the website
+* Github - Used to host the repository, store the commit history and manage the project board containing user stories
+* Heroku - A cloud platform that the application is deployed to
+* Lighthouse - Used to test site performance
+* Looka - Used to generate the you.i logo
+* Tech Sini - Used to generate the mockup of the final website on several devices
+* Favicon - Used to create the favicon
+* Google Chrome DevTools - Used to debug and test responsiveness
+* Google Fonts - Used to import the website font
+* Cloudinary - A service that hosts image files in the project.
+* Coolers - Used to create the colour palette
+* HTML Validation - Used to validate HTML code
+* CSS Validation - Used to validate CSS code
+* JSHint Validation - Used to validate JavaScript code
+* Font Awesome - Used for icons across UI
+
+### Testing
+
+Please click this [link](/TESTS.md) to access the information for filmfeeds frontend tests.
+
+### Deployment
+
+#### Deployment to heroku
+
+Once you have created a new gitpod workspace and set up the new project, you are ready to deploy to Heroku.
+
+In your heroku account, select Create New App, and give it a unique name related to your project.
+Select a region corresponding to where you live and click 'Create App'.
+Head into the 'Deploy' tab select GitHub as the 'deployment method', find your project repository and click 'Connect'.
+Click 'Deploy branch' to trigger Heroku to start building the application.
+Once you see the message saying 'build succeeded' you can click 'Open App' to see your application in the browser.
+Connect React Frontend to the API backend
+Once you have set up the workspace and done a basic deploy to Heroku, you can connect the react workspace to your API, in order to send data to the API
+
+In the Heroku dashboard, go into the API application settings
+In 'Settings' add a new Config Var called 'CLIENT_ORIGIN' and set that to the URL for your deployed React application.
+Then add another Config Var called 'CLIENT_ORIGIN_DEV' and enter the URL of your Gitpod preview link, remembering to remove the trailing slash at the end. Gitpod occasionally changes this URL so keep an eye on it, as you are working on your project.
+Go back into your frontend Gitpod workspace, and install the Axios library using the command 'npm install axios'.
+Create a folder called 'API' and inside it create a file called 'axiosDefaults'.
+import axios at the top of the file
+Define your baseURL which is the unique URL of your deployed API project.
+Set the content-type header to multi-part/form-data as the API will need to deal with images as well as text in it's requests.
+In order to avoid any CORS issues, set withCredentials to True.
+Import this file into App.js to be used across all pages
+Fork this Project Repository
+It is possible to make an independent copy of a GitHub Repository by forking the GitHub account. The copy can then be viewed and it is also possible to make changes in the copy without affecting the original repository. To fork the repository, follow these steps:
+
+After logging in to GitHub, locate the repository. On the top right side of the page there is a 'Fork' button. Click on the button to create a copy of the original repository.
+Clone this Project Repository
+A Git clone creates a linked copy of the project that will continue to synchronize with the original repository. In order to create a clone, you can click on the 'Code' button inside the selected repository and then select the 'Clone' option from the dropdown list.
+
+### Credits
+
+* React Bootstrap documentation: - Documentation used for styling and to build responsive web pages
+* Code Institute: Walkthrough modules for the Moments app
+* Code Institute Slack Community: Slack community for troubleshooting and FAQ.
+* Code Institute Tutor Support: For help and support
+* React documentation: Everything you need to know about React
+* Stack Overflow: For troubleshooting and FAQ
+* W3Schools: Online Web Tutorials
+
+### Acknowledgments
+
+* I would like to thank the tutors of Code Institute for their assistance in answering/helping me understand any code related questions, and guiding me throughout the project creation.
+* I would also like to extend my appreciation to the Slack community for their continuous engagement and willingness to share knowledge. The collaborative environment provided a platform for learning, troubleshooting, and gaining inspiration from fellow developers.
+* I would also like to extend my thanks to my mentor at Code Institute, Adeye Adegbenga for help and feedback, and advice when reviewing my code.
