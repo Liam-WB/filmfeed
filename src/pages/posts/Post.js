@@ -95,10 +95,12 @@ const Post = (props) => {
       </Card.Body>
       <Link to={`/posts/${id}`}>
         <Card.Img src={image} alt={title} />
-          <div className={styles.PostMovieContainer}>
-            {movie && <Card.Text className={styles.PostMovie}>Currently Watching: {JSON.parse(movie).Title}</Card.Text>}
-            {movie && <img className={styles.PostMoviePoster} src={JSON.parse(movie).Poster} alt="#"></img>}
-          </div>
+            {movie && 
+              <div className={styles.PostMovieContainer}>
+                <Card.Text className={styles.PostMovie}>Currently Watching: {JSON.parse(movie).Title}</Card.Text>
+                <img className={styles.PostMoviePoster} src={JSON.parse(movie).Poster} alt="#"></img>
+              </div>
+            }     
       </Link>
       <Card.Body>
         {title && <Card.Title className={styles.PostTitle}>{title}</Card.Title>}

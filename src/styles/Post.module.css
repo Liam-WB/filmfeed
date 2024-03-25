@@ -48,11 +48,17 @@ h5 {
 }
 
 .PostMovie {
-  background-color: #92AD40;
-  padding: 5px;
+  padding: 56% 36% 56% 36%;
   color: #FFFFFF;
   font-weight: bold;
+  z-index: 1;
+  position: absolute;
+  margin: -20px;
+  left:5%;
+  background: linear-gradient(265.27deg, #72727200 5.55%, rgb(121, 121, 121, 0.8) 50%);
+  transition: 0.3s;
 }
+
 
 .PostMovieContainer {
   width: 33%;
@@ -61,21 +67,17 @@ h5 {
   float: right;
   right: 1%;
   top: 72%;
+  border-radius: 20px;
   z-index: 1;
-
+  border: 3px solid #1ed2dc;
   overflow: hidden;
-  visibility: visible;
-  transition: 0.3s;
 }
 
-.postMovieContainer:focus {
-  visibility: visible;
-}
-
-.postMoviePoster {
+.PostMoviePoster {
   height: 100%;
   width: 100%;
   position: absolute;
   background-position:center;
   object-fit: cover;
+  left: 0;
 }
