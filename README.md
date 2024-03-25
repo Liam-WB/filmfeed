@@ -8,7 +8,9 @@ This README.md is for the project frontend. For more information on the project 
 
 The filmfeed interactive frontend is designed to give users a digitally hassle free and relatively simple yet effective user experience by keeping their journey to their intended actions short and sweet, whilst not taking their attention away from the big picture. Everything from asset performance to colour palet have been made with UX in mind. Unregistered users will be greeted with a hub-like-homepage connecting different movie enthusiasts, or people that just want to connect, from around the world, keeping up to date with the latest watches or simply joining in conversations. Unregistered users will find the usual social media features: Sign in/ Sign up pages, posts with the latest movie likes, dislikes, conversations, most popular movies and profiles and their pages as well as search functionality for finding more specific comments, posts or profiles. For those looking to get involved, signed in users will be given access to their own profile/identity as well as a tailor made experience for them to start their own conversations, topics or join other conversations. Users will also be able to like/unlike others posts and follow/unfollow others, therefore updating their own likes/dislikes and feeds.
 
-Live API [link](https://filmfeed-api-d8205608db2c.herokuapp.com/).
+Live Website [link](https://filmfeed-bcb30b221337.herokuapp.com/).
+
+![Responsive](/md_images/image.png)
 
 ## Directory of contents
 
@@ -159,4 +161,32 @@ The nav bar is made to give the user a hassle free and simple navigation experie
 ![NavBar3](md_images/Screenshot%202024-03-25%20085527.png)
 
 ![NavBar4](md_images/Screenshot%202024-03-25%20085534.png)
+
+![NavBar5](/md_images/image%20copy.png)
+
+##### Authentication
+
+For unregistered user, the sign up link can be used to create a user account. I have used the standard dj-rest/auth/registration signup process for this.
+
+![SignUp](/md_images/Screenshot%202024-03-25%20144431.png)
+
+If a user has an account already, they can click the sign in link on the navbar to be brought to the sign in page.
+
+![SignIn](/md_images/Screenshot%202024-03-25%20144418.png)
+
+On the other hand, already signed in users are presented with the sign out link to sign out.
+
+##### Posts page (Homepage)
+
+There are 4 components located throughout the homepage:
+* Popular Profile component
+* Posts list component
+* Search bar component
+* Copyright component
+
+##### Popular profiles component
+
+The popular profiles component is made to appear across the right of all pages on large screens and at the top of all pages on smaller screens. This component uses a filter to order all site users by followers count from highest to lowest. The top ten profiles are displayed on larger screens, and the top 4 on smaller screens.
+
+![PPComp](/md_images/Screenshot%202024-03-25%20150541.png)
 
