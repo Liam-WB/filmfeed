@@ -3,6 +3,7 @@ import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
 import { Route, Switch } from "react-router-dom";
+import ContactUsForm from "./pages/contactus/ContactUsForm";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
@@ -63,6 +64,7 @@ function App() {
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route exact path="/movies" render={() => <MoviesPage />} />
           <Route exact path="/movies/:id" render={() => <MoviePage />} />
+          <Route exact path="/contact" render={() => <ContactUsForm />} />
           <Route
             exact
             path="/profiles/:id/edit/username"

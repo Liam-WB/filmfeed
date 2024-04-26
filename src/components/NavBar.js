@@ -118,6 +118,14 @@ const NavBar = () => {
 
           {currentUser ? loggedInIcons : loggedOutIcons}
 
+          <NavLink 
+              className={styles.NavLink} 
+              activeClassName={styles.Active} 
+              to="/contact"
+          >
+              <i className="fa-solid fa-envelope"></i>Contact Us
+          </NavLink>
+
         </Nav>
       </Navbar.Collapse>
     </Navbar>
