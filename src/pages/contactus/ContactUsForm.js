@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import axios from 'axios'; // Import axios for making HTTP requests
 import { useHistory } from 'react-router-dom';
+import appStyles from "../../App.module.css";
+import btnStyles from "../../styles/Button.module.css";
 
 const ContactUsForm = () => {
     const form = useRef();
@@ -48,16 +50,16 @@ const ContactUsForm = () => {
     };
 
     return (
-        <div>
-            <h2>Contact Us</h2>
+        <div className={appStyles.Content}>
+            <h2 className="text-center my-4">Need to contact us? Fill out the details below:</h2>
             <form ref={form} onSubmit={handleFormSubmit}>
-                <label>Name</label>
-                <input type="text" name="name" value={name} onChange={handleInputChange} required />
-                <label>Email</label>
-                <input type="email" name="email" value={email} onChange={handleInputChange} required />
-                <label>Message</label>
-                <textarea name="message" value={message} onChange={handleInputChange} required />
-                <input type="submit" value="Send"/>
+                <label>Name </label>
+                <input className="col" type="text" name="name" value={name} onChange={handleInputChange} required />
+                <label>Email </label>
+                <input className="col" type="email" name="email" value={email} onChange={handleInputChange} required />
+                <label>Message </label>
+                <textarea className="col" name="message" value={message} onChange={handleInputChange} required />
+                <input className={`${btnStyles.Button} ${btnStyles.Blue} btn col`} type="submit" value="Send"/>
             </form>
         </div>
     );
