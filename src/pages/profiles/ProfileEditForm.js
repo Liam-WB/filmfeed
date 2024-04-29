@@ -17,6 +17,7 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { useAlert } from "../../contexts/AlertContext";
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -24,6 +25,7 @@ const ProfileEditForm = () => {
   const { id } = useParams();
   const history = useHistory();
   const imageFile = useRef();
+  const { addAlert } = useAlert();
 
   const [profileData, setProfileData] = useState({
     name: "",
@@ -77,9 +79,11 @@ const ProfileEditForm = () => {
         profile_image: data.image,
       }));
       history.goBack();
+      addAlert("Profile updated successfully.", "success");
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
+      addAlert("Profile update failed. Make sure the boxes are filled in properly.", "danger");
     }
   };
 

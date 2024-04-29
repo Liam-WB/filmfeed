@@ -16,10 +16,12 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { useAlert } from "../../contexts/AlertContext";
 
 const UsernameForm = () => {
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState({});
+  const { addAlert } = useAlert();
 
   const history = useHistory();
   const { id } = useParams();
@@ -46,9 +48,11 @@ const UsernameForm = () => {
         username,
       }));
       history.goBack();
+      addAlert("Username updated successfully.", "success");
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
+      addAlert("Username update failed. Make sure the content meets the requirements.", "danger");
     }
   };
 
