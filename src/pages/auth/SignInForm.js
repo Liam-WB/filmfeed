@@ -18,9 +18,12 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
 
+import { useAlert } from '../../contexts/AlertContext';
+
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
   useRedirect('loggedIn')
+  const { addAlert } = useAlert();
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -29,8 +32,8 @@ function SignInForm() {
   const { username, password } = signInData;
 
   const [errors, setErrors] = useState({});
-
   const history = useHistory();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -38,9 +41,11 @@ function SignInForm() {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
       setTokenTimestamp(data);
+      addAlert("Successfully signed in.", "success");
       history.goBack();
     } catch (err) {
       setErrors(err.response?.data);
+      addAlert("Error! Make sure all boxes are filled out correctly.", "danger");
     }
   };
 

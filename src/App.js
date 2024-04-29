@@ -19,6 +19,7 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import MoviePage from "./pages/movies/MoviePage";
 import MoviesPage from "./pages/movies/MoviesPage"
 import NotFound from "./components/NotFound";
+import Alert from "./components/Alert"
 
 function App() {
   const currentUser = useCurrentUser();
@@ -29,7 +30,7 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
 
-        
+        <Alert />
 
         <Switch>
           <Route 

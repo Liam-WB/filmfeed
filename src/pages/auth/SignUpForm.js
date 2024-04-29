@@ -17,8 +17,11 @@ import {
 import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect";
 
+import { useAlert } from "../../contexts/AlertContext";
+
 const SignUpForm = () => {
   useRedirect('loggedIn')
+  const { addAlert } = useAlert();
   const [signUpData, setSignUpData] = useState({
     username: "",
     password1: "",
@@ -42,8 +45,10 @@ const SignUpForm = () => {
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       history.push("/signin");
+      addAlert("Successfully signed up.", "success");
     } catch (err) {
       setErrors(err.response?.data);
+      addAlert("Error! Make sure all information is filled out, and no incorrect characters are used.", "danger")
     }
   };
 

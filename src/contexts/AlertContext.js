@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 const AlertContext = createContext();
 
@@ -10,6 +10,16 @@ export const AlertProvider = ({ children }) => {
   const addAlert = (message, type) => {
     setAlerts([...alerts, { message, type }]);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (alerts.length > 0) {
+        setAlerts((prevAlerts) => prevAlerts.slice(1));
+      }
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, [alerts]);
 
   const removeAlert = () => {
     setAlerts([]);
