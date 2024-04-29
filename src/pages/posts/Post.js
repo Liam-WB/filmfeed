@@ -93,8 +93,8 @@ const Post = (props) => {
           </div>
         </Media>
       </Card.Body>
-      
-      <Card.Img src={image} alt={title} />
+
+      <Card.Img fluid="true" src={image} alt={title} />
       <Link to={`/posts/${id}`}></Link>
 
         {movie !== 'null' && (
