@@ -28,6 +28,9 @@ function App() {
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.Main}>
+
+        
+
         <Switch>
           <Route 
             exact
