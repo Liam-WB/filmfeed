@@ -93,15 +93,23 @@ const Post = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <Link to={`/posts/${id}`}>
-        <Card.Img src={image} alt={title} />
-            {movie &&
-              <div className={styles.PostMovieContainer}>
-                <Card.Text className={styles.PostMovie}>Currently Watching: {JSON.parse(movie)?.Title}</Card.Text>
-                <img className={styles.PostMoviePoster} src={JSON.parse(movie)?.Poster} alt="#"></img>
-              </div>
-            }
-      </Link>
+      
+      <Card.Img src={image} alt={title} />
+      <Link to={`/posts/${id}`}></Link>
+
+        {movie !== 'null' && (
+          <Link to={`/posts/${id}`}>
+          <div className={styles.PostMovieContainer}>
+          {movie && typeof movie === 'string' && (
+        <>
+          <Card.Text className={styles.PostMovie}>Currently Watching: {JSON.parse(movie)?.Title}</Card.Text>
+          <img className={styles.PostMoviePoster} src={JSON.parse(movie)?.Poster} alt="#" />
+        </>
+      )}
+          </div>
+          </Link>
+        )}
+      
       <Card.Body>
         {title && <Card.Title className={styles.PostTitle}>{title}</Card.Title>}
         <hr></hr>
