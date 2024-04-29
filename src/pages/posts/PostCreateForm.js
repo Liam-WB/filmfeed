@@ -15,6 +15,7 @@ import { useHistory } from "react-router";
 import { axiosCustom, axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 import {apiKey} from "../../apikey";
+import { useAlert } from "../../contexts/AlertContext"
 
 function PostCreateForm() {
   useRedirect("loggedOut")
@@ -29,6 +30,7 @@ function PostCreateForm() {
   const { title, content, image, movie } = postData;
   const imageInput = useRef(null);
   const history = useHistory();
+  const { addAlert } = useAlert();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -67,10 +69,12 @@ function PostCreateForm() {
     try {
       const { data } = await axiosReq.post("/posts/", formData);
       history.push(`/posts/${data.id}`);
+      addAlert("Post created successfully.", "success");
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
+        addAlert("Failed to create post. Please check that all boxes have been filled properly.", "danger");
       }
     }
   };

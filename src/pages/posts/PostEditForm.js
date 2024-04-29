@@ -15,6 +15,7 @@ import btnStyles from "../../styles/Button.module.css";
 import { useHistory, useParams } from "react-router";
 import { axiosCustom, axiosReq } from "../../api/axiosDefaults";
 import { apiKey } from "../../apikey";
+import { useAlert } from "../../contexts/AlertContext";
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
@@ -29,6 +30,7 @@ function PostEditForm() {
   const imageInput = useRef(null);
   const history = useHistory();
   const { id } = useParams();
+  const { addAlert } = useAlert();
 
   useEffect(() => {
     const handleMount = async () => {
@@ -76,10 +78,12 @@ function PostEditForm() {
     try {
       await axiosReq.put(`/posts/${id}/`, formData);
       history.push(`/posts/${id}`);
+      addAlert("Post updated successfully.", "success");
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
+        addAlert("Post update failed. Please check that all boxes have been filled properly.", "danger");
       }
     }
   };

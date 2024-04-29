@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import { useAlert } from "../../contexts/AlertContext";
 
 const Post = (props) => {
   const {
@@ -28,6 +29,7 @@ const Post = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
+  const { addAlert } = useAlert();
 
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
@@ -37,6 +39,7 @@ const Post = (props) => {
     try {
       await axiosRes.delete(`/posts/${id}/`);
       history.goBack();
+      addAlert("Post successfully deleted.", "success");
     } catch (err) {
       console.log(err);
     }
@@ -94,8 +97,9 @@ const Post = (props) => {
         </Media>
       </Card.Body>
 
-      <Card.Img fluid="true" src={image} alt={title} />
-      <Link to={`/posts/${id}`}></Link>
+      <Link to={`/posts/${id}`}>
+        <Card.Img fluid="true" src={image} alt={title} />
+      </Link>
 
         {movie !== 'null' && (
           <Link to={`/posts/${id}`}>
