@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { axiosRes } from "../../api/axiosDefaults";
 import styles from "../../styles/CommentCreateEditForm.module.css";
+import { useAlert } from "../../contexts/AlertContext";
 
 function CommentEditForm(props) {
   const { id, content, setShowEditForm, setComments } = props;
+  const { addAlert } = useAlert();
 
   const [formContent, setFormContent] = useState(content);
 
@@ -31,8 +33,10 @@ function CommentEditForm(props) {
         }),
       }));
       setShowEditForm(false);
+      addAlert("Comment updated successfully.", "success");
     } catch (err) {
       console.log(err);
+      addAlert("Failed to update comment. Make sure the content is filled properly.", "danger");
     }
   };
 
