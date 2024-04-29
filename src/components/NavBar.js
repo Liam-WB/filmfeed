@@ -8,10 +8,12 @@ import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { removeTokenTimestamp } from "../utils/utils";
+import { useAlert } from "../contexts/AlertContext";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  const { addAlert } = useAlert();
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
@@ -20,6 +22,7 @@ const NavBar = () => {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
       removeTokenTimestamp();
+      addAlert("Successfully signed out.", "success");
     } catch (err) {
       console.log(err);
     }

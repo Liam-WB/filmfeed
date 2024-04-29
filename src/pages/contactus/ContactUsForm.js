@@ -4,6 +4,7 @@ import axios from 'axios'; // Import axios for making HTTP requests
 import { useHistory } from 'react-router-dom';
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import { useAlert } from '../../contexts/AlertContext';
 
 const ContactUsForm = () => {
     const form = useRef();
@@ -14,6 +15,7 @@ const ContactUsForm = () => {
     });
     const { name, email, message } = contactData;
     const history = useHistory();
+    const { addAlert } = useAlert();
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -36,8 +38,10 @@ const ContactUsForm = () => {
             const formData = new FormData(form.current);
             await axios.post("/contact/", formData);
             history.push('/');
+            addAlert("Thanks for sending us a message! A member of staff will be in touch as soon as possible.", "success");
         } catch (error) {
             console.error('Error submitting form:', error);
+            addAlert("Failed to send message. Please check that all boxes have been filled in properly.", "danger");
             if (error.response?.status !== 401) {
                 console.error(error.response?.data);
             }
