@@ -2,28 +2,31 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import styles from "../../styles/MoviesPage.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import appstyles from "../../App.module.css"
+import appstyles from "../../App.module.css";
 import { Button } from "react-bootstrap";
 import {apiKey} from "../../apikey";
 import { axiosCustom } from "../../api/axiosDefaults";
-
 
 function MoviesPage() {
   const [query, setQuery] = useState("");
   const [data, setData] = useState({});
 
-  const onSearchHandler = () => {
+  const onSearchHandler = async () => {
     if (!query) {
       return;
     }
 
-    const fetchMovie = async () => {
-      const response = await axiosCustom.get(`http://www.omdbapi.com/?t=${query}&&apiKey=${apiKey}`)
-      setData(response.data);
-    };
-
-    fetchMovie();
-    setQuery("");
+    try {
+      const searchResponse = await axiosCustom.post("/movies/", { title: query });
+      console.log("Movie added to database:", searchResponse.data);
+      setData(searchResponse.data);
+      const omdbResponse = await axiosCustom.get(`http://www.omdbapi.com/?t=${query}&apiKey=${apiKey}`);
+      console.log("OMDB API response:", omdbResponse.data);
+      setData(omdbResponse.data);
+      setQuery("");
+    } catch (error) {
+      console.error("Error searching movie:", error);
+    }
   };
 
   return (
@@ -32,7 +35,10 @@ function MoviesPage() {
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
           className={styles.SearchBar}
-          onSubmit={(event) => event.preventDefault()}
+          onSubmit={(event) => {
+            event.preventDefault();
+            onSearchHandler();
+          }}
         >
           <Form.Control
             value={query}
@@ -44,46 +50,49 @@ function MoviesPage() {
         </Form>
         <div className="margin-0 text-center">
           <Button
-          className={`${btnStyles.Button} ${btnStyles.Blue} ${btnStyles.SB}`}
-          onClick={onSearchHandler}
+            className={`${btnStyles.Button} ${btnStyles.Blue} ${btnStyles.SB}`}
+            onClick={onSearchHandler}
           >
             Search
           </Button>
         </div>
       </div>
 
-      { Object.keys (data).length > 0 &&
-      <div className={appstyles.NewContent}>
+      {Object.keys(data).length > 0 && (
+        <div className={appstyles.NewContent}>
           <div className="mt-10 w-full flex items-center justify-center">
-          <div>
-            <img className={styles.MoviePoster} src={data.Poster} alt="#" />
-          </div>
-          <div className="ml-5 bg-slate-200">
-            <h1>Title: {data.Title}</h1>
-            <div className="pt-2" />
-            <p>Director: {data.Director}</p>
-            <div className="pt-2" />
-            <p>Genre: {data.Genre}</p>
-            <div className="pt-2" />
-            <p>Year: {data.Year}</p>
-            <div className="pt-2" />
-            <p>Country: {data.Country}</p>
-            <div className="pt-2" />
-            <p>Actors: {data.Actors}</p>
-            <div className="pt-2" />
-            <p>Language: {data.Language}</p>
-            <div className="pt-2" />
-            <p>Rating: {data.imdbRating}</p>
-            <div className="pt-2" />
-            <p>Plot: {data.Plot}</p>
-            <div className="pt-2" />
+            <div>
+              <img
+                className={styles.MoviePoster}
+                src={data.Poster}
+                alt="#"
+              />
+            </div>
+            <div className="ml-5 bg-slate-200">
+              <h1>Title: {data.Title}</h1>
+              <div className="pt-2" />
+              <p>Director: {data.Director}</p>
+              <div className="pt-2" />
+              <p>Genre: {data.Genre}</p>
+              <div className="pt-2" />
+              <p>Year: {data.Year}</p>
+              <div className="pt-2" />
+              <p>Country: {data.Country}</p>
+              <div className="pt-2" />
+              <p>Actors: {data.Actors}</p>
+              <div className="pt-2" />
+              <p>Language: {data.Language}</p>
+              <div className="pt-2" />
+              <p>Rating: {data.imdbRating}</p>
+              <div className="pt-2" />
+              <p>Plot: {data.Plot}</p>
+              <div className="pt-2" />
+            </div>
           </div>
         </div>
-      </div>
-      }
+      )}
     </div>
   );
 }
-
 
 export default MoviesPage;
