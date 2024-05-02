@@ -7,11 +7,14 @@ import appstyles from "../../App.module.css";
 import { Button } from "react-bootstrap";
 import {apiKey} from "../../apikey";
 import { axiosCustom } from "../../api/axiosDefaults";
+import UserRating from "../../components/UserRating";
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 function MoviesPage() {
   const history = useHistory();
   const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState({});
+  const currentUser = useCurrentUser();
 
   const onSearchHandler = useCallback(async (query) => {
     if (!query) {
@@ -105,6 +108,11 @@ function MoviesPage() {
               <div className="pt-2" />
             </div>
           </div>
+
+          <div className="pt-4">
+            { currentUser && <UserRating /> }
+          </div>
+          
         </div>
       )}
     </div>
