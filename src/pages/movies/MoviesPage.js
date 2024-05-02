@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import styles from "../../styles/MoviesPage.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -8,26 +9,44 @@ import {apiKey} from "../../apikey";
 import { axiosCustom } from "../../api/axiosDefaults";
 
 function MoviesPage() {
-  const [query, setQuery] = useState("");
+  const history = useHistory();
+  const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState({});
 
-  const onSearchHandler = async () => {
+  const onSearchHandler = useCallback(async (query) => {
     if (!query) {
       return;
     }
 
     try {
-      const searchResponse = await axiosCustom.post("/movies/", { title: query });
-      console.log("Movie added to database:", searchResponse.data);
-      setData(searchResponse.data);
       const omdbResponse = await axiosCustom.get(`http://www.omdbapi.com/?t=${query}&apiKey=${apiKey}`);
       console.log("OMDB API response:", omdbResponse.data);
+
+      history.push(`/movies?query=${encodeURIComponent(omdbResponse.data.Title)}`);
       setData(omdbResponse.data);
-      setQuery("");
+
+      const uploadResponse = await axiosCustom.post("/movies/", {title: omdbResponse.data.Title});
+      console.log("Movie added to database:", uploadResponse.data);
+      
+      setSearchQuery("");
     } catch (error) {
       console.error("Error searching movie:", error);
     }
+  }, [history]);
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    onSearchHandler(searchQuery);
   };
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const queryParam = searchParams.get("query");
+    if (queryParam) {
+      setSearchQuery(queryParam);
+      onSearchHandler(queryParam);
+    }
+  }, [onSearchHandler]);
 
   return (
     <div className="pt-4">
@@ -35,14 +54,11 @@ function MoviesPage() {
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
           className={styles.SearchBar}
-          onSubmit={(event) => {
-            event.preventDefault();
-            onSearchHandler();
-          }}
+          onSubmit={handleSearch}
         >
           <Form.Control
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
             type="text"
             className="mr-sm-2"
             placeholder="Search a movie..."
@@ -51,7 +67,7 @@ function MoviesPage() {
         <div className="margin-0 text-center">
           <Button
             className={`${btnStyles.Button} ${btnStyles.Blue} ${btnStyles.SB}`}
-            onClick={onSearchHandler}
+            onClick={handleSearch}
           >
             Search
           </Button>
