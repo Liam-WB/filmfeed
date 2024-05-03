@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import styles from "../../styles/MoviesPage.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -12,6 +12,7 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 function MoviesPage() {
   const history = useHistory();
+  const location = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState({});
   const currentUser = useCurrentUser();
@@ -37,19 +38,19 @@ function MoviesPage() {
     }
   }, [history]);
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    onSearchHandler(searchQuery);
-  };
-
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
+    const searchParams = new URLSearchParams(location.search);
     const queryParam = searchParams.get("query");
     if (queryParam) {
       setSearchQuery(queryParam);
       onSearchHandler(queryParam);
     }
-  }, [onSearchHandler]);
+  }, [location.search, onSearchHandler]);
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    onSearchHandler(searchQuery);
+  };
 
   return (
     <div className="pt-4">
@@ -110,7 +111,7 @@ function MoviesPage() {
           </div>
 
           <div className="pt-4">
-            { currentUser && <UserRating /> }
+            { currentUser && <UserRating title={decodeURIComponent(data.Title)} />}
           </div>
           
         </div>
