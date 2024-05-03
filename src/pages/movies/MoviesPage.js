@@ -33,7 +33,7 @@ function MoviesPage() {
       
       setSearchQuery("");
     } catch (error) {
-      console.error("Error searching movie:", error);
+      console.error("Error searching movie, or movie already exists:", error);
     }
   }, [history]);
 
