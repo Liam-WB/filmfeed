@@ -3,6 +3,7 @@ import { FaStar } from "react-icons/fa";
 import styles from "../styles/UserRating.module.css";
 import { axiosCustom } from "../api/axiosDefaults";
 import { useAlert } from "../contexts/AlertContext";
+import { useHistory } from "react-router-dom";
 
 
 const colors = {
@@ -18,6 +19,7 @@ function UserRating({ title }) {
   const [hoverValue, setHoverValue] = useState(null);
   const stars = Array(5).fill(0);
   const { addAlert } = useAlert();
+  const history = useHistory();
 
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -49,6 +51,7 @@ function UserRating({ title }) {
       const response = await axiosCustom.patch(`/movies/${title}/`, {
         user_ratings: currentValue
       });
+      history.push(`/movies?query=${encodeURIComponent(title)}`)
       console.log("Rating submitted successfully:", response.data);
       addAlert("Movie rating submitted!", "success");
     } catch (error) {
