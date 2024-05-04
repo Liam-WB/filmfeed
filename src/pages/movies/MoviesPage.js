@@ -28,6 +28,9 @@ function MoviesPage() {
       const omdbResponse = await axiosCustom.get(`http://www.omdbapi.com/?t=${query}&apiKey=${apiKey}`);
       console.log("OMDB API response:", omdbResponse.data);
 
+      const averageRatingResponse = await axiosCustom.get(`/movies/${encodeURIComponent(omdbResponse.data.Title)}`);
+      setAverageRating(averageRatingResponse.data.average_rating);
+
       const title = omdbResponse.data.Title;
       setCurrentMovieTitle(title);
       history.push(`/movies?query=${encodeURIComponent(omdbResponse.data.Title)}`);
@@ -37,8 +40,7 @@ function MoviesPage() {
       console.log("Movie added to database:", uploadResponse.data);
       
       setSearchQuery("");
-      const averageRatingResponse = await axiosCustom.get(`/movies/${encodeURIComponent(uploadResponse.data.Title)}`);
-      setAverageRating(averageRatingResponse.data.average_rating);
+      
     } catch (error) {
       console.error("Error searching movie, or movie already exists:", error);
     }
@@ -114,7 +116,7 @@ function MoviesPage() {
               <div className="pt-2" />
               <p>Plot: {data.Plot}</p>
               <div className="pt-2" />
-              <p>User Rating (1-5 stars): {averageRating}</p>
+              <p>User Rating (1-5 stars): {Math.round(averageRating*10)/10}</p>
               <div className="pt-2" />
             </div>
           </div>
