@@ -107,13 +107,13 @@ function ProfilePage() {
               </Button>
             ))}
         </Col>
-        {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
     </>
   );
 
   const mainProfilePosts = (
     <>
+      {profile?.bio && <Col className="p-3">{profile.bio}</Col>}
       <hr />
       <p className="text-center">{profile?.owner}'s posts</p>
       <hr />
