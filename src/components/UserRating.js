@@ -14,8 +14,8 @@ const colors = {
 
 function UserRating({ title }) {
   const [movieData, setMovieData] = useState(null);
-  const [currentValue, setCurrentValue] = useState(0);
-  const [hoverValue, setHoverValue] = useState(undefined);
+  const [currentValue, setCurrentValue] = useState(null);
+  const [hoverValue, setHoverValue] = useState(null);
   const stars = Array(5).fill(0);
   const { addAlert } = useAlert();
 
@@ -41,7 +41,7 @@ function UserRating({ title }) {
   };
 
   const handleMouseLeave = () => {
-    setHoverValue(undefined);
+    setHoverValue(null);
   };
 
   const handleSubmit = async () => {
@@ -61,7 +61,7 @@ function UserRating({ title }) {
     <div className={`${styles.Container}`}>
       {movieData && (
         <>
-          <h3> Rate {movieData.title}: </h3>
+          <h3> Rate this movie: </h3>
           <div className={`${styles.Star}`}>
             {stars.map((_, index) => {
               return (

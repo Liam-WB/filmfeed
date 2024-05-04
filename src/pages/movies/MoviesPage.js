@@ -15,6 +15,8 @@ function MoviesPage() {
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState({});
+  const [averageRating, setAverageRating] = useState(0);
+  const [currentMovieTitle, setCurrentMovieTitle] = useState("");
   const currentUser = useCurrentUser();
 
   const onSearchHandler = useCallback(async (query) => {
@@ -26,6 +28,8 @@ function MoviesPage() {
       const omdbResponse = await axiosCustom.get(`http://www.omdbapi.com/?t=${query}&apiKey=${apiKey}`);
       console.log("OMDB API response:", omdbResponse.data);
 
+      const title = omdbResponse.data.Title;
+      setCurrentMovieTitle(title);
       history.push(`/movies?query=${encodeURIComponent(omdbResponse.data.Title)}`);
       setData(omdbResponse.data);
 
@@ -33,6 +37,8 @@ function MoviesPage() {
       console.log("Movie added to database:", uploadResponse.data);
       
       setSearchQuery("");
+      const averageRatingResponse = await axiosCustom.get(`/movies/${encodeURIComponent(uploadResponse.data.Title)}`);
+      setAverageRating(averageRatingResponse.data.average_rating);
     } catch (error) {
       console.error("Error searching movie, or movie already exists:", error);
     }
@@ -81,6 +87,7 @@ function MoviesPage() {
       {Object.keys(data).length > 0 && (
         <div className={appstyles.NewContent}>
           <div className="mt-10 w-full flex items-center justify-center">
+            <div className="pt-4" />
             <div>
               <img
                 className={styles.MoviePoster}
@@ -107,11 +114,13 @@ function MoviesPage() {
               <div className="pt-2" />
               <p>Plot: {data.Plot}</p>
               <div className="pt-2" />
+              <p>User Rating (1-5 stars): {averageRating}</p>
+              <div className="pt-2" />
             </div>
           </div>
 
           <div className="pt-4">
-            { currentUser && <UserRating title={decodeURIComponent(data.Title)} />}
+            { currentUser && <UserRating title={currentMovieTitle} />}
           </div>
           
         </div>
