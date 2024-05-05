@@ -56,10 +56,8 @@ function UserRating({ title }) {
         average_rating: response.data.average_rating
       }));
 
-      console.log("Rating submitted successfully:", response.data);
       addAlert("Movie rating submitted!", "success");
     } catch (error) {
-      console.error("Error submitting rating:", error);
       addAlert("Error! Rating submission failed. Please try again later.", "danger")
     }
   };
