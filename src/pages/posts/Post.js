@@ -7,7 +7,6 @@ import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { useAlert } from "../../contexts/AlertContext";
-import Preload from "../../components/Preload"
 
 const Post = (props) => {
   const {
@@ -81,7 +80,6 @@ const Post = (props) => {
   return (
     <Card className={styles.Post}>
       <Card.Body>
-        <Preload imageURL={image} />
         <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profile_image} height={55} />

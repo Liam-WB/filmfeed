@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import axios from 'axios'; // Import axios for making HTTP requests
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";

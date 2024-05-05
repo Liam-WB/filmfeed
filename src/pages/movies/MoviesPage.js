@@ -5,7 +5,7 @@ import styles from "../../styles/MoviesPage.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appstyles from "../../App.module.css";
 import { Button } from "react-bootstrap";
-import {apiKey} from "../../apikey";
+import { apiKey } from "../../apikey";
 import { axiosCustom } from "../../api/axiosDefaults";
 import UserRating from "../../components/UserRating";
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
@@ -27,9 +27,6 @@ function MoviesPage() {
     try {
       const omdbResponse = await axiosCustom.get(`http://www.omdbapi.com/?t=${query}&apiKey=${apiKey}`);
       console.log("OMDB API response:", omdbResponse.data);
-
-      const averageRatingResponse = await axiosCustom.get(`/movies/${encodeURIComponent(omdbResponse.data.Title)}`);
-      setAverageRating(averageRatingResponse.data.average_rating);
 
       const title = omdbResponse.data.Title;
       setCurrentMovieTitle(title);
@@ -54,6 +51,21 @@ function MoviesPage() {
       onSearchHandler(queryParam);
     }
   }, [location.search, onSearchHandler]);
+
+  useEffect(() => {
+    const fetchAverageRating = async () => {
+      if (currentMovieTitle) {
+        try {
+          const averageRatingResponse = await axiosCustom.get(`/movies/${encodeURIComponent(currentMovieTitle)}`);
+          setAverageRating(averageRatingResponse.data.average_rating);
+        } catch (error) {
+          console.error("Error fetching average rating:", error);
+        }
+      }
+    };
+  
+    fetchAverageRating();
+  }, [currentMovieTitle]);
 
   const handleSearch = (event) => {
     event.preventDefault();

@@ -20,7 +20,6 @@ const ProfilePage = lazy(() => import("./pages/profiles/ProfilePage"));
 const UsernameForm = lazy(() => import("./pages/profiles/UsernameForm"));
 const UserPasswordForm = lazy(() => import("./pages/profiles/UserPasswordForm"));
 const ProfileEditForm = lazy(() => import("./pages/profiles/ProfileEditForm"));
-const MoviePage = lazy(() => import("./pages/movies/MoviePage"));
 const MoviesPage = lazy(() => import("./pages/movies/MoviesPage"));
 
 function App() {
@@ -68,7 +67,6 @@ function App() {
             <Route exact path="/posts/:id/edit" component={PostEditForm} />
             <Route exact path="/profiles/:id" component={ProfilePage} />
             <Route exact path="/movies" component={MoviesPage} />
-            <Route exact path="/movies/:id" component={MoviePage} />
             <Route exact path="/contact" component={ContactUsForm} />
             <Route
               exact
