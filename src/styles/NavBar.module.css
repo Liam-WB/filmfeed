@@ -1,7 +1,7 @@
 .NavBar {
     background-color: #efefef;
     border: 1px solid lightgray;
-    padding: 10 10 20 20;
+    padding: 10px 10px 15px 15px;
     box-shadow: 0px -35px 1.5em 2.2em rgb(0, 0, 0);
 }
 
