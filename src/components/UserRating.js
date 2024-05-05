@@ -18,6 +18,7 @@ function UserRating({ title }) {
   const [hoverValue, setHoverValue] = useState(null);
   const stars = Array(5).fill(0);
   const { addAlert } = useAlert();
+  
 
   useEffect(() => {
     const fetchMovieData = async () => {
