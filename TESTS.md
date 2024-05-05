@@ -14,6 +14,7 @@ Comprehensive testing has been done throughout development to ensure that the pr
     * Resolved Bugs
     * Unresolved Bugs
 * Manual/features Tests
+* Browser Tests
 * Lighthouse Tests
 * Peer Tests
 
@@ -382,3 +383,32 @@ As well as the tests above, the following manual tests were executed to ensure a
 ✓ Users can upload an avatar image into the form
 
 ✓ Users can change the uploaded image
+
+### Browser tests
+
+Chrome DevTools was used to test the responsiveness of the application on different screen sizes. In addition, testing has been carried out on the following browsers:
+
+* Google Chrome
+* Microsoft Edge
+* OperaGX
+* Safari on ios
+
+### Lighthouse tests
+
+Google Lighthouse in Chrome Developer Tools was also used to test the application's performance/load times, accessibility, best practices and SEO. The results for the main pages are shown below:
+
+Home page:
+
+![Home LH](/md_images/Screenshot%202024-05-05%20101937.png)
+
+Movies page:
+
+![Movies LH](/md_images/Screenshot%202024-05-05%20161947.png)
+
+Contact us page:
+
+![Contact LH](/md_images/Screenshot%202024-05-05%20162151.png)
+
+### Peer tests
+
+In addition to the above tests, I also asked my peers to review my code and interact with the site. All tester's response was positive overall.
