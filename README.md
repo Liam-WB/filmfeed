@@ -210,7 +210,7 @@ If the user is looking for a specific item within the database, it'll be returne
 
 ##### Movies page
 
-The movies page is simply a tool for users to search a movie, and have it return the movie data. As explained in the backend README file, the method for fetching the Open Movie DataBase data in this page is all done via the frontend, as the data is readonly and does not need to be stored. The page consists of a very simple search bar and search button for users to input a movie they're trying to look up. The search query will then make a request to the OMDB API and return the movie with the closest title to the search query, or it'll return an error saying the movie was not found. Upon successfully fetching a movie, a secondary component is displayed holding all the movie data for the user to read through.
+The movies page is simply a tool for users to search a movie, and have it return the movie data. As explained in the backend README file, the method for fetching the Open Movie DataBase data in this page is all done via the frontend, as the data is readonly and does not need to be stored. The page consists of a very simple search bar and search button for users to input a movie they're trying to look up. The search query will then make a request to the OMDB API and return the movie with the closest title to the search query, or it'll return an error saying the movie was not found. Upon successfully fetching a movie, a secondary component is displayed holding all the movie data for the user to read through. The movie is then also added to the database to store with extra data such as the user's movie ratings. Each movie updates the url bar with the uri encoded search query for easy navigation and accessibility around the site.
 
 ![MoviesPage1](/md_images/Screenshot%202024-03-25%20153111.png)
 
@@ -278,6 +278,26 @@ Throughout the site, you'll see profile avatars located on components e.g. navba
 ![PP4](/md_images/Screenshot%202024-03-25%20162004.png)
 ![PP5](/md_images/Screenshot%202024-03-25%20161116.png)
 
+##### Contact us page
+
+The contact page contains a form made for logged in and non logged in users alike, giving them the ability to send a message to a site developer upon requiring assistance with a site specific issue. For example if an issue were ever encountered in the future that a developer hadn't accounted for, the user could notify the developer of this. Similarly if a user is having trouble logging in or has some site feedback this could be used for these reasons too. The contact us page has a straightforward form containing input boxes for the user's name, email and message. Upon submission, the user will send an email to the selected recipients email address for them to respond to when seen. The contact form template was created using emailjs and the selected recipient's email address can be changed via the linked template.
+
+![contactpage](/md_images/Screenshot%202024-05-05%20163347.png)
+
+##### Data validation (alerts)
+
+Almost every user input / form input is accompanied by danger, success or warning alerts (warning alerts shown next to specific incorrect data while success/danger are shown at the top). Each alert is made to pop up upon the attempt/success of a user CRUD action and will show the specific issue with the data upon CRUD action failure. Each success or danger alert shown at the top of the page is made with timeouts, visibility and unobtrusiveness in mind, to not obstruct the user's focus.
+
+![alert1](/md_images/Screenshot%202024-05-05%20163418.png)
+![alert2](/md_images/Screenshot%202024-05-05%20163447.png)
+
+##### User ratings/average ratings
+
+On every movie page, there is now a user rating segment, only accessible to authorised users. This box allows users to submit a rating 1 through 5 stars, and upon submission this is added to the database. The backend in tandem can then calculate every submitted user rating into a mean average for the frontend to submit as a user average rating out of 5 stars.
+
+![userratings](/md_images/Screenshot%202024-05-05%20163524.png)
+![averagerating](/md_images/Screenshot%202024-05-05%20163518.png)
+
 ##### Reusable React content
 
 * Asset reused for loading images, messages and spinners
@@ -287,10 +307,10 @@ Throughout the site, you'll see profile avatars located on components e.g. navba
 * Three dots edit delete dropdown menu used for afforementioned dropdown content
 
 ##### Future features
-* A user - movie rating system
 * Admin crud functionality in the frontend for site moderation
 * A watch history profile section
 * A popular movies section similar to popular profiles
+* Optimised loading times - Extra preloads
 
 ### Skeleton
 
